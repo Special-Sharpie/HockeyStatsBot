@@ -5,7 +5,9 @@
     <bookmark url="file://$PROJECT_DIR$/venv/ServerTimezone.json" line="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50c86dc6-8c56-478d-9d87-553cf7933ec1" name="Default Changelist" comment="" />
+    <list default="true" id="50c86dc6-8c56-478d-9d87-553cf7933ec1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +19,7 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="89" />
-          <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="39" />
           <entry key="project.open.time.3" value="65" />
@@ -25,18 +27,18 @@
           <entry key="project.open.time.5" value="6" />
           <entry key="project.open.time.6" value="4" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="156" />
+          <entry key="project.opened" value="157" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cfg" value="5" />
           <entry key="gif" value="14" />
-          <entry key="gitignore" value="2" />
+          <entry key="gitignore" value="3" />
           <entry key="html" value="1" />
           <entry key="json" value="196" />
           <entry key="md" value="1" />
-          <entry key="py" value="1855" />
+          <entry key="py" value="1856" />
           <entry key="txt" value="73" />
         </counts>
       </usages-collector>
@@ -46,14 +48,15 @@
           <entry key="Image" value="14" />
           <entry key="JSON" value="196" />
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="80" />
-          <entry key="Python" value="1855" />
+          <entry key="PLAIN_TEXT" value="81" />
+          <entry key="Python" value="1856" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="519" />
           <entry key="dummy" value="50" />
+          <entry key="gitignore" value="45" />
           <entry key="json" value="986" />
           <entry key="py" value="78727" />
           <entry key="txt" value="5230" />
@@ -62,7 +65,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="986" />
-          <entry key="PLAIN_TEXT" value="5280" />
+          <entry key="PLAIN_TEXT" value="5325" />
           <entry key="Python" value="79246" />
         </counts>
       </usages-collector>
@@ -76,8 +79,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="4" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+            <state relative-caret-position="289">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -189,6 +192,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -205,7 +209,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -390,8 +393,8 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5751634" visible="true" weight="0.09641728" />
-      <window_info id="Structure" order="1" sideWeight="0.4248366" side_tool="true" visible="true" weight="0.09641728" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5735294" visible="true" weight="0.09641728" />
+      <window_info id="Structure" order="1" sideWeight="0.42647058" side_tool="true" visible="true" weight="0.09641728" />
       <window_info id="Favorites" order="2" sideWeight="0.31196582" side_tool="true" weight="0.09536354" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -401,7 +404,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3362256" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3362256" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5015806" side_tool="true" weight="0.23101953" />
       <window_info anchor="bottom" x="485" y="326" width="1278" height="1008" id="Python Console" order="10" type="WINDOWED" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -630,13 +633,6 @@
     <entry file="file://$PROJECT_DIR$/venv/test.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Career.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/daySummery.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -694,10 +690,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Career.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="4" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        <state relative-caret-position="289">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>

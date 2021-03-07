@@ -1,0 +1,17 @@
+HockeyStats version: 1.2.1
+
+HotFix:
+    -Fixed the issue causing "HS-lifeWL" to solely return an error.
+
+Command Updates:
+    -SERVER SIDE TIMEZONES. Since the inception of hockeystats we have been limited to times soley in mountain. No more. With the brand new "HS-setTimezone" command, you can pick between 4 differnet timezones!
+     This command impacts all time based commands.
+    -Added a bit more information to game summary commands, making the Gtoday and Glast command return the most up to date goal scorers for that game. While the game is live, the in game time and period is provided.
+    -Updated the colours of teams whose primary colour change this season. Teams changed: CGY, BUF.
+
+New features:
+    -HS-perGame. Takes a player and a stat, returns that player's stat over total games played.
+     the accepted stats: "TOI", "A", "G", "PIM", "SHOTS", "HITS", "PPG", "PPP", "PPTOI", "ETOI", "SHTP", "GWG", "OTG", "SHG", "SHP", "SHTOI", "B", "PM", "P", "SHIFTS"
+    - setTimezone. Updtes the preferred timezone of the requestion server
+     To change the timezone, run the command, and pass it a timezone code
+     The codes are: EASTERN TIME: "ET", CENTRAL TIME: "CT", MOUNTAIN TIME: "MT", and PACIFIC TIME: "PT"

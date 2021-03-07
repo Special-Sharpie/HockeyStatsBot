@@ -1,0 +1,33 @@
+|Team: ID
+|New Jersey Devils: 1
+|New York Islanders: 2
+|New York Rangers: 3
+|Philadelphia Flyers: 4
+|Pittsburgh Penguins: 5
+|Bonston Bruins: 6
+|Buffalo Sabres: 7
+|Montreal Canadiens: 8
+|Ottawa Senators: 9
+|Toronto Maple Leaf: 10
+|Carolina Hurricanes: 12
+|Florida Panther: 13
+|Tampa Bay Lightning: 14
+|Washington Capitals: 15
+|Chicago Blackhawks: 16
+|Detroit Red Wings: 17
+|Nashville Predators: 18
+|St. Louis Blues: 19
+|Calgary Flames: 20
+|Coloarado Avalanche: 21
+|Edmonton Oilers: 22
+|Vancouver Canucks: 23
+|Anaheim Ducks: 24
+|Dallas Stars: 25
+|Los Angeles Kings: 26
+|San Jose Sharks: 28
+|Columbus Blue Jackets: 29
+|Minnesota Wild: 30
+|Winnipeg Jets: 52
+|Arizone Coyotes: 53
+|Vegas Golden Knights: 54
+|Seattle Kraken: 55 (No commands currently work for this ID, as of 2021-01-05)

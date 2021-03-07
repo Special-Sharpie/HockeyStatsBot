@@ -24,7 +24,6 @@ def skaterStats(player):
 
     with open('career.txt', 'a') as f:
         x = 'Season: Team | GP | G | A | P | +/- | PIM | PPG | SHG '
-        #print('Season: Team | GP | G | A | P | +/- | PIM | PPG | SHG ')
         i = 0
         while i < len(yearByYear):
             league = yearByYear[i]['league']['name']
@@ -63,7 +62,6 @@ def skaterStats(player):
                 abbr = bot.getOtherAbbr(str(Team))
 
                 f.write('{}: {} | {} | {} | {} | {} | {} | {} | {} | {}   '.format(season, abbr, GP, G, A, P, PM, PIM, PPG, SHG) + '\n')
-                #f.write('------------------------------------------------\n')
                 i += 1
 
             else:

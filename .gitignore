@@ -1,4 +1,5 @@
 .idea/
+/code/ServerTimezone.json
 
 # IPython
 profile_default/

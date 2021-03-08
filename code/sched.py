@@ -12,7 +12,7 @@ tz={
     "ET" : "Canada/Eastern"
 }
 
-def sched(ID, code):
+def schedule(ID, code):
     tday = datetime.date.today()
     length = 8
     testedLS = {}

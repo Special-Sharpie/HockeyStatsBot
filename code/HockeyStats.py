@@ -590,7 +590,7 @@ async def next7(ctx, ABBR):
     team = botLogic.GetTeamName(ID)
     r, g, b = botLogic.readJSON('TeamColour.json', ID)
     TZ = botLogic.readJSON('ServerTimezone.json', str(guildID))
-    x = sched.sched(ID, TZ)
+    x = sched.schedule(ID, TZ)
     e = discord.Embed(title='7 Day Schedule - {}'.format(team), colour= discord.Colour.from_rgb(r, g, b))
     for i in x:
         date = x[i]
@@ -692,15 +692,15 @@ async def playoffStandings(ctx, abbr, round, season):
     await ctx.channel.send('', embed = e)
 
 @client.command()
-async def daySummary(ctx):
+async def daySummary(ctx, RequestDate= str(datetime.date.today())):
     guildID = ctx.message.guild.id
-    x = daySummery.daySumDate()
+    x = daySummery.daySumDate(RequestDate)
     date = x[1]
     TZ = botLogic.readJSON('ServerTimezone.json', str(guildID))
     e = discord.Embed(title= 'Day Summary - ' + date, colour= discord.Colour.from_rgb(0,0,0))
     i = 0
     while i < x[0]:
-        z = daySummery.daySum(i, TZ)
+        z = daySummery.daySum(i, TZ, RequestDate)
         if len(z) == 7:
             e.add_field(name= z[0] + ' VS. ' + z[1], value= z[2] +': '+ str(z[4]) + ' | ' + z[3] + ': ' + str(z[5]) + ' | ' + z[6], inline= False)
         else:

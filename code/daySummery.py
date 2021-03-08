@@ -12,9 +12,9 @@ tz={
     "ET" : "Canada/Eastern"
 }
 
-def daySumDate():
+def daySumDate(RequestedDate):
     ls = []
-    url = requests.get('http://statsapi.web.nhl.com/api/v1/schedule')
+    url = requests.get('http://statsapi.web.nhl.com/api/v1/schedule?date={}'.format(RequestedDate))
     date = url.json()['dates'][0]['date']
     dt = datetime.datetime.strptime(date, '%Y-%m-%d')
 
@@ -24,11 +24,10 @@ def daySumDate():
     ls.extend((len(numOfGames), game_dt))
     return ls
 
-def daySum(i, TZ):
-    url = requests.get('http://statsapi.web.nhl.com/api/v1/schedule')
+def daySum(i, TZ, RequestedDate):
+    url = requests.get('http://statsapi.web.nhl.com/api/v1/schedule?date={}'.format(RequestedDate))
     numOfGames = url.json()['dates'][0]['games']
     ls = []
-
     code = numOfGames[i]['status']['statusCode']
     if int(code) < 3:
         data = numOfGames[i]['teams']

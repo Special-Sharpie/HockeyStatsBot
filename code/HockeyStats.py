@@ -27,7 +27,6 @@ import statsPerGame
 
 
 #Variables
-token = ''
 client = commands.Bot(command_prefix='HS-')
 game = discord.Game("Prefix is now HS-")
 
@@ -721,4 +720,6 @@ async def info(ctx):
     await ctx.author.send('A helpful document!', file= discord.File('HockeyBot_documentation.docx'))
 
 #Runs the bot
-client.run(token)
+with open('token.txt', 'r+') as f:
+    token = f.read()
+    client.run(token)

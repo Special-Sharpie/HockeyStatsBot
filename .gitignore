@@ -4,7 +4,8 @@
 /code/ChadDataBase.json
 /code/testbot.py
 /code/__pycache__
-
+/Scripts
+/Lib
 # IPython
 profile_default/
 ipython_config.py

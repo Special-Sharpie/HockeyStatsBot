@@ -1,6 +1,8 @@
 .idea/
 /code/ServerTimezone.json
 /code/token.txt
+/code/ChadDataBase.json
+/code/testbot.py
 
 # IPython
 profile_default/

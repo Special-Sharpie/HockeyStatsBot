@@ -1,4 +1,4 @@
-DiscordBot
+HockeyStatsBot
 
 A Discord Bot that uses the NHL API in order to pull live updating hockey stats.
 

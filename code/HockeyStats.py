@@ -17,6 +17,7 @@ import Career
 import sched
 import statsPerGame
 import DraftYear
+import playerInfo
 
 
 #Variables
@@ -711,6 +712,17 @@ async def draftByYear(ctx, team, year= 2020):
     for res in results:
         for draftee in results[res]:
             e.add_field(name=res, value=draftee, inline= False)
+    await ctx.channel.send('', embed=e)
+
+@client.command()
+async def Pinfo(ctx, playerName):
+    playerID = botLogic.GetPlayerID(playerName)
+    fullName = botLogic.GetPlayerName(playerID)
+    personal = playerInfo.playerInfo(playerName)
+    teamBased = playerInfo.playerTeamInfo(playerName)
+    e = discord.Embed(title='Player Info | {}'.format(fullName), colour=discord.Colour.from_rgb(0,0,0))
+    e.add_field(name='Personal', value=personal)
+    e.add_field(name='Team Based', value=teamBased)
     await ctx.channel.send('', embed=e)
 
 @client.command()

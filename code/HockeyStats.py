@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import requests
 import datetime
+import pytz
 import last
 import next
 import playoffData
@@ -686,7 +687,10 @@ async def playoffStandings(ctx, abbr, round, season):
     await ctx.channel.send('', embed = e)
 
 @client.command()
-async def daySummary(ctx, RequestDate= str(datetime.date.today())):
+async def daySummary(ctx, RequestDate= None):
+    if RequestDate == None:
+        RequestDate = str(datetime.datetime.now(pytz.timezone('Canada/Mountain')))
+    RequestDate = RequestDate[:10]
     guildID = ctx.message.guild.id
     x = daySummery.daySumDate(RequestDate)
     date = x[1]

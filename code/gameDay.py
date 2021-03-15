@@ -17,7 +17,7 @@ def gday(ID, TZ):
     lst = []
     preList = []
     postList = []
-    tday = datetime.date.today()
+    tday = datetime.datetime.now(pytz.timezone('Canada/Mountain')).date()
     url = requests.get('https://statsapi.web.nhl.com/api/v1/schedule?teamId=' + str(ID) + '&startDate=' + str(tday) +'&endDate=' + str(tday))
     url2 = requests.get('https://statsapi.web.nhl.com/api/v1/game/'+botLogic.getGamePK(ID)+'/linescore')
 

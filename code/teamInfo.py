@@ -1,7 +1,5 @@
 import hockeyPy
 
-abbr = 'CGY'
-
 def teamInfo(abbr):
     Team = hockeyPy.Team(abbr)
     infoLs = []

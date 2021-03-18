@@ -730,6 +730,14 @@ async def Pinfo(ctx, playerName):
     await ctx.channel.send('', embed=e)
 
 @client.command()
+async def Tinfo(ctx, abbr):
+    name, info, colour = teamInfo.teamInfo(abbr)
+    r, g, b = colour
+    e = discord.Embed(title='Team Info | {}'.format(name), description=info, colour= discord.Colour.from_rgb(r, g, b))
+    await ctx.channel.send('', embed=e)
+
+
+@client.command()
 async def whatsNew(ctx):
     with open('new.txt', 'r') as f:
         x = f.read()

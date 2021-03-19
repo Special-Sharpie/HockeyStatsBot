@@ -1,17 +1,16 @@
-HockeyStats version: 1.2.1
+HockeyStats version: 1.3.0
 
-HotFix:
-    -Fixed the issue causing "HS-lifeWL" to solely return an error.
+THANK YOU ALL SO MUCH FOR HELPING US GET INTO 75 SERVERS! This a pretty huge milestone that we honestly never thought we would achieve!
+
+We are on github now! Better late then never right? Link to the repo: https://github.com/Special-Sharpie/HockeyStatsBot
+Have you noticed that the bot has been running a little slow as of late? Because we have too. So we decided to alter how the bot is being hosted.
+Previously i had it running on my Raspberry Pi, who served us greatly, however we have now switched to a hosting platform by the name of Pebblehost. If you are keen you may have already noticed the increase in speed.
 
 Command Updates:
-    -SERVER SIDE TIMEZONES. Since the inception of hockeystats we have been limited to times soley in mountain. No more. With the brand new "HS-setTimezone" command, you can pick between 4 differnet timezones!
-     This command impacts all time based commands.
-    -Added a bit more information to game summary commands, making the Gtoday and Glast command return the most up to date goal scorers for that game. While the game is live, the in game time and period is provided.
-    -Updated the colours of teams whose primary colour change this season. Teams changed: CGY, BUF.
+    -Modified some of the commands that require datetime, after uploading the bot to Pebblehost, there were some issues with dates and times, as all the code was set up to work with the mountain timezone, but the sever was UTC.
+    -HS-daySummary can now be given a date as a parameter(YYYY-MM-DD), which will return a summary for that day.
 
 New features:
-    -HS-perGame. Takes a player and a stat, returns that player's stat over total games played.
-     the accepted stats: "TOI", "A", "G", "PIM", "SHOTS", "HITS", "PPG", "PPP", "PPTOI", "ETOI", "SHTP", "GWG", "OTG", "SHG", "SHP", "SHTOI", "B", "PM", "P", "SHIFTS"
-    - setTimezone. Updtes the preferred timezone of the requestion server
-     To change the timezone, run the command, and pass it a timezone code
-     The codes are: EASTERN TIME: "ET", CENTRAL TIME: "CT", MOUNTAIN TIME: "MT", and PACIFIC TIME: "PT"
+    - HS-draftByYear: Returns all draft picks of the requested team from the requested year. Ex: HS-draftByYear NYR 2020.
+    - HS-Pinfo: Returns a suite of information about the requested player.
+    - HS=Tinfo: Returns a suite of information about the requested team. 

@@ -1,15 +1,8 @@
 import discord
 from discord.ext import commands
-import asyncio
-import random
 import requests
 import datetime
-from datetime import timedelta
 import pytz
-import time
-import json
-import tabulate as tab
-import pprint as p
 import last
 import next
 import playoffData
@@ -24,6 +17,8 @@ import daySummery
 import Career
 import sched
 import statsPerGame
+import DraftYear
+import playerInfo
 
 
 #Variables
@@ -692,7 +687,10 @@ async def playoffStandings(ctx, abbr, round, season):
     await ctx.channel.send('', embed = e)
 
 @client.command()
-async def daySummary(ctx, RequestDate= str(datetime.date.today())):
+async def daySummary(ctx, RequestDate= None):
+    if RequestDate == None:
+        RequestDate = str(datetime.datetime.now(pytz.timezone('Canada/Mountain')))
+    RequestDate = RequestDate[:10]
     guildID = ctx.message.guild.id
     x = daySummery.daySumDate(RequestDate)
     date = x[1]
@@ -707,6 +705,37 @@ async def daySummary(ctx, RequestDate= str(datetime.date.today())):
             e.add_field(name= z[0] + ' VS. ' + z[1], value=z[2] + ' VS. ' + z[3] + ' | ' + z[4], inline=False)
         i += 1
     await ctx.channel.send('', embed= e)
+
+@client.command()
+async def draftByYear(ctx, team, year= 2020):
+    teamID = botLogic.readJSON('ABBRid.json', team)
+    teamFullName = botLogic.GetTeamName(teamID)
+    r, g, b = botLogic.readJSON('TeamColour.json', teamID)
+    results = DraftYear.draft(year, teamID)
+    e = discord.Embed(title='{} Draft | {}'.format(year, teamFullName), colour= discord.Colour.from_rgb(r, g, b))
+    for res in results:
+        for draftee in results[res]:
+            e.add_field(name=res, value=draftee, inline= False)
+    await ctx.channel.send('', embed=e)
+
+@client.command()
+async def Pinfo(ctx, playerName):
+    playerID = botLogic.GetPlayerID(playerName)
+    fullName = botLogic.GetPlayerName(playerID)
+    personal = playerInfo.playerInfo(playerName)
+    teamBased = playerInfo.playerTeamInfo(playerName)
+    e = discord.Embed(title='Player Info | {}'.format(fullName), colour=discord.Colour.from_rgb(0,0,0))
+    e.add_field(name='Personal', value=personal)
+    e.add_field(name='Team Based', value=teamBased)
+    await ctx.channel.send('', embed=e)
+
+@client.command()
+async def Tinfo(ctx, abbr):
+    name, info, colour = teamInfo.teamInfo(abbr)
+    r, g, b = colour
+    e = discord.Embed(title='Team Info | {}'.format(name), description=info, colour= discord.Colour.from_rgb(r, g, b))
+    await ctx.channel.send('', embed=e)
+
 
 @client.command()
 async def whatsNew(ctx):

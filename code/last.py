@@ -9,7 +9,7 @@ import botLogic
 def last(teamID):
     # getting the dates to check for previous games
     ls = []
-    tday = datetime.date.today()
+    tday = datetime.datetime.now(pytz.timezone('Canada/Mountain')).date()
     i = 1
     while i <= 10:
         last = tday - timedelta(days=i)

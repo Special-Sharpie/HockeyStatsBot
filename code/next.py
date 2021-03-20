@@ -14,7 +14,7 @@ tz={
 
 def next(teamID, code):
     # getting the dates to check for previous games
-    tday = datetime.date.today()
+    tday = datetime.datetime.now(pytz.timezone('Canada/Mountain')).date()
     i = 1
     while i <= 10:
         d = datetime.date(2020, 1, 17)

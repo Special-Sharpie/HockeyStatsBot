@@ -175,7 +175,7 @@ def getActualRoundName(url, round, season):
     return actualRound
 
 def getGamePK(team):
-    date = datetime.date.today()
+    date = datetime.datetime.now(pytz.timezone('Canada/Mountain')).date()
     url = requests.get('https://statsapi.web.nhl.com/api/v1/schedule?teamId=' + str(team) + '&startDate=' + str(date) +'&endDate=' + str(date))
     pk = url.json()['dates'][0]['games'][0]['gamePk']
     return str(pk)

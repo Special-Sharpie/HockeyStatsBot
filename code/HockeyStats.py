@@ -53,7 +53,7 @@ async def on_command_error(ctx, error):
 #Commands
 @client.command()
 async def serverCount(ctx):
-    await ctx.channel.send('Currently providing hockey stats to {} servers!'.format(client.guilds))
+    await ctx.channel.send('Currently providing hockey stats to {} servers!'.format(len(client.guilds)))
 
 @client.event
 async def on_guild_join(ctx):

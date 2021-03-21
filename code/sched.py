@@ -13,7 +13,7 @@ tz={
 }
 
 def schedule(ID, code):
-    tday = datetime.date.today()
+    tday = datetime.datetime.now(pytz.timezone('Canada/Mountain')).date()
     length = 8
     testedLS = {}
     i = 1

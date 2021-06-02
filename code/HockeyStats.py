@@ -3,6 +3,7 @@ from discord.ext import commands
 import requests
 import datetime
 import pytz
+import hockeyPy
 import last
 import next
 import playoffData
@@ -19,7 +20,7 @@ import sched
 import statsPerGame
 import DraftYear
 import playerInfo
-
+import statLeaders as sl
 
 #Variables
 client = commands.Bot(command_prefix='HS-')
@@ -736,6 +737,13 @@ async def Tinfo(ctx, abbr):
     e = discord.Embed(title='Team Info | {}'.format(name), description=info, colour= discord.Colour.from_rgb(r, g, b))
     await ctx.channel.send('', embed=e)
 
+@client.command()
+async def statLeaders(ctx, abbr, count, stat='points'):
+    team = hockeyPy.Team(abbr)
+    teamName = team.GetTeamName()
+    results = sl.teamLeaders(abbr, int(count), stat)
+    e = discord.Embed(title=f'{teamName} | {stat[0].upper() + stat[1:-1]} Leaders', description=results)
+    await ctx.channel.send('', embed=e)
 
 @client.command()
 async def whatsNew(ctx):

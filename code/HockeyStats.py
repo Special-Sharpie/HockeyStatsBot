@@ -742,7 +742,8 @@ async def statLeaders(ctx, abbr, count, stat='points'):
     team = hockeyPy.Team(abbr)
     teamName = team.GetTeamName()
     results = sl.teamLeaders(abbr, int(count), stat)
-    e = discord.Embed(title=f'{teamName} | {stat[0].upper() + stat[1:-1]} Leaders', description=results)
+    r, g, b = team.getTeamColour(team.id)
+    e = discord.Embed(title=f'{teamName} | {stat[0].upper() + stat[1:-1]} Leaders', description=results, colour= discord.Colour.from_rgb(r, g, b))
     await ctx.channel.send('', embed=e)
 
 @client.command()

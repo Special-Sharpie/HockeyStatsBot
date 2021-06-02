@@ -65,6 +65,11 @@ class Player: # Designed to be a parent class, which the end user will inherite 
     def getTeamDict(self, info):
         team = info['currentTeam']
         return team
+    
+    def GetPlayerName(self):
+        name_url = requests.get('https://statsapi.web.nhl.com/api/v1/people/' + str(self.id))
+        FullName = name_url.json()['people'][0]['fullName']
+        return FullName
 
 
 class Team: # Designed to be a parent class, which the end user will inherite from
@@ -90,6 +95,11 @@ class Team: # Designed to be a parent class, which the end user will inherite fr
         except:
             raise TeamError("InvalidTeamAbbr")
     
+    def GetTeamName(self):
+        url = requests.get('https://statsapi.web.nhl.com/api/v1/teams/' + str(self.id))
+        name = url.json()['teams'][0]['name']
+        return name
+
     def getWinLoss(self):
         win = self.stats['wins']
         loss = self.stats['losses']

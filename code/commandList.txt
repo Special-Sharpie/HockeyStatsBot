@@ -1,5 +1,5 @@
 Welcome and thank you for adding HockeyBot to your discord server! HockeyBot is your one stop shop for all the hockey stats you want, on the fly! See below for list of working commands!
-This page is your key to understanding every command as well as parameters that are required in order to retrieve (almost) live updating data from the NHL website!
+This page is your key to understanding every command as well as parameters that are required in order to retrieve live updating data from the NHL website!
 
 Commands:
 1.	HS-teamID – This is the most important command, as most of the team-based commands run of the IDs provided.

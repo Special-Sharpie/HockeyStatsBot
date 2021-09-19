@@ -30,4 +30,4 @@
 |Winnipeg Jets: 52
 |Arizone Coyotes: 53
 |Vegas Golden Knights: 54
-|Seattle Kraken: 55 (No commands currently work for this ID, as of 2021-01-05)
+|Seattle Kraken: 55

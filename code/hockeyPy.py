@@ -192,9 +192,8 @@ class MatchUp: # Returns most of the endpoints for gathering game data. The data
         self.away = self.teams['away']['team']
 
 
-    def getGameId(self, schedule): # Returns the ID (or as the NHL API refers: PK) of the game of the passed date and team. Raises a .
-        try:
-            
+    def getGameId(self, schedule): # Returns the ID (or as the NHL API refers: PK) of the game of the passed date and team.
+        try:          
             pk = schedule['dates'][0]['games'][0]['gamePk']
             return str(pk)
         except: 

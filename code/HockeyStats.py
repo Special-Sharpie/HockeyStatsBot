@@ -20,7 +20,9 @@ import sched
 import statsPerGame
 import DraftYear
 import playerInfo
+import teamInfo
 import statLeaders as sl
+import nonActivePlayerCareer as non
 
 #Variables
 client = commands.Bot(command_prefix='HS-')
@@ -745,6 +747,14 @@ async def statLeaders(ctx, abbr, count, stat='points'):
     r, g, b = team.getTeamColour(team.id)
     e = discord.Embed(title=f'{teamName} | {stat[0].upper() + stat[1:-1]} Leaders', description=results, colour= discord.Colour.from_rgb(r, g, b))
     await ctx.channel.send('', embed=e)
+
+@client.command()
+async def ATplayerStats(ctx, name):
+    playerId = botLogic.readJSON("AllTimePlayer.json", name)
+    firstYear, lastYear, fullname, stats = non.skaterStats(playerId)
+    e = discord.Embed(title=f"All time player Stats | {fullname}", description=f"Active from {firstYear} to {lastYear}", colour=discord.Colour.from_rgb(0,0,0))
+    e.add_field(name="Career Totals:", value=stats)
+    await ctx.channel.send('', embed= e)
 
 @client.command()
 async def whatsNew(ctx):

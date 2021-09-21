@@ -237,3 +237,11 @@ def getGameTime(teamID, date):
     ls.extend((time, period))
     return ls
 
+def getPlayerType(playerID):
+    request = requests.get(f'https://statsapi.web.nhl.com/api/v1/people/{playerID}')
+    postion = request.json()['people'][0]['primaryPosition']['code']
+    if postion == 'G':
+        return True
+    else:
+        return False
+

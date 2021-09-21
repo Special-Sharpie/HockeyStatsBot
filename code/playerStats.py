@@ -4,10 +4,11 @@ import botLogic
 
 def stats(playerID, playoff, season):
     ls = []
+    isGoalie = botLogic.getPlayerType(playerID)
     if playoff == 'R':
         stats_url = requests.get('https://statsapi.web.nhl.com/api/v1/people/' + str(playerID) + '/stats?stats=statsSingleSeason&season=' + str(season))
         #stat = stats_url.json()['stats'][0]['splits'][0]['stat']
-        try:
+        if not isGoalie:
             playerTOI = stats_url.json()['stats'][0]['splits'][0]['stat']['timeOnIce']
             playerAssists = stats_url.json()['stats'][0]['splits'][0]['stat']['assists']
             playerGoals = stats_url.json()['stats'][0]['splits'][0]['stat']['goals']
@@ -31,7 +32,7 @@ def stats(playerID, playoff, season):
             ls.append(name)
             ls.append(x)
             return ls
-        except:
+        else:
             goalieTOI = stats_url.json()['stats'][0]['splits'][0]['stat']['timeOnIce']#done
             goalieOT = stats_url.json()['stats'][0]['splits'][0]['stat']['ot']
             goalieSO = stats_url.json()['stats'][0]['splits'][0]['stat']['shutouts']
@@ -52,7 +53,7 @@ def stats(playerID, playoff, season):
             return ls
     elif playoff == 'P':
         stats_url = requests.get('https://statsapi.web.nhl.com/api/v1/people/' + str(playerID) + '/stats?stats=statsSingleSeasonPlayoffs&season=' + str(season))
-        try:
+        if not isGoalie:
             playerTOI = stats_url.json()['stats'][0]['splits'][0]['stat']['timeOnIce']
             playerAssists = stats_url.json()['stats'][0]['splits'][0]['stat']['assists']
             playerGoals = stats_url.json()['stats'][0]['splits'][0]['stat']['goals']
@@ -76,7 +77,7 @@ def stats(playerID, playoff, season):
             ls.append(name)
             ls.append(x)
             return ls
-        except:
+        else:
             goalieTOI = stats_url.json()['stats'][0]['splits'][0]['stat']['timeOnIce']#done
             goalieOT = stats_url.json()['stats'][0]['splits'][0]['stat']['ot']
             goalieSO = stats_url.json()['stats'][0]['splits'][0]['stat']['shutouts']

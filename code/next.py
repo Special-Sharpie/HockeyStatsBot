@@ -17,7 +17,6 @@ def next(teamID, code):
     tday = datetime.datetime.now(pytz.timezone('Canada/Mountain')).date()
     i = 1
     while i <= 10:
-        d = datetime.date(2020, 1, 17)
         next = tday + timedelta(days=i)
 
         # urls used to check the last 10 days for hockey games

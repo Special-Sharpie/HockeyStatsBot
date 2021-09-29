@@ -43,7 +43,7 @@ class Player: # Designed to be a parent class, which the end user will inherite 
         self.teamColour = self.getTeamColour(self.teamId)
 
     def getPlayerID(self, PlayerName):
-        with open('Player.json', 'r+') as f:
+        with open('AllTimePlayer.json', 'r+') as f:
             data = json.load(f)
             return(data[PlayerName])
     

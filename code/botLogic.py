@@ -12,7 +12,7 @@ def writeJSON(file, key, value):
         data = json.load(f)
         data[key] = value
         f.seek(0)
-        json.dump(data, f, indent=4)
+        json.dump(data, f, indent=2)
         f.truncate()
 
 def readJSON(file, value):
@@ -20,7 +20,24 @@ def readJSON(file, value):
         data = json.load(f)
         return data[value]
 
-def Chadthing(ctx):
+def clearJSON(file, deletedValue):
+    with open(file, "r+")as f:
+        data = json.load(f)
+        del data[deletedValue]
+        f.seek(0)
+        json.dumps(data)
+        f.truncate()
+
+def logCommands(ctx, response):
+    with open('Commandlogs.json', 'r+') as f:
+        ls = {"ID": ctx.message.id, "nickname":ctx.author.nick, "channel": ctx.channel.name, "content": ctx.message.content, "error": False ,"response": response}
+        data = json.load(f)
+        data['user'][findOppIndex(data['user'], 'userId', ctx.author.id)]['messages'].append(ls)
+        f.seek(0)
+        json.dump(data, f, indent=2)
+        f.truncate()
+
+def Chadthing():
     y = random.randint(1, 9)
     if y <= 2:
         return 'tier1'
@@ -83,9 +100,9 @@ def getConf(conf):
 def isTies(season):
     tiesUrl =  requests.get('https://statsapi.web.nhl.com/api/v1/seasons/' + season)
     ties = tiesUrl.json()['seasons'][0]['tiesInUse']
-    if ties == True:
+    if ties:
         return True
-    elif ties == False:
+    else:
         return False
 
 def homeOrAway(url, ID):

@@ -1,4 +1,3 @@
-import json
 import requests
 import botLogic
 
@@ -7,7 +6,6 @@ def stats(playerID, playoff, season):
     isGoalie = botLogic.getPlayerType(playerID)
     if playoff == 'R':
         stats_url = requests.get('https://statsapi.web.nhl.com/api/v1/people/' + str(playerID) + '/stats?stats=statsSingleSeason&season=' + str(season))
-        #stat = stats_url.json()['stats'][0]['splits'][0]['stat']
         if not isGoalie:
             playerTOI = stats_url.json()['stats'][0]['splits'][0]['stat']['timeOnIce']
             playerAssists = stats_url.json()['stats'][0]['splits'][0]['stat']['assists']
@@ -33,7 +31,7 @@ def stats(playerID, playoff, season):
             ls.append(x)
             return ls
         else:
-            goalieTOI = stats_url.json()['stats'][0]['splits'][0]['stat']['timeOnIce']#done
+            goalieTOI = stats_url.json()['stats'][0]['splits'][0]['stat']['timeOnIce']
             goalieOT = stats_url.json()['stats'][0]['splits'][0]['stat']['ot']
             goalieSO = stats_url.json()['stats'][0]['splits'][0]['stat']['shutouts']
             goalieWins = stats_url.json()['stats'][0]['splits'][0]['stat']['wins']

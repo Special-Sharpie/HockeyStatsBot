@@ -27,7 +27,7 @@ import nonActivePlayerCareer as non
 
 #Variables
 client = commands.Bot(command_prefix='HS-')
-game = discord.Game("Prefix is now HS-")
+game = discord.Game("HS-donate | HS-whatsNew | HS-setTimezone")
 
 #Events:
 @client.event

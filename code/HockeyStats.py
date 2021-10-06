@@ -814,6 +814,7 @@ async def statCodes(ctx):
     with open("statCodes.txt", "r+") as f:
         codes = f.read()
         await ctx.author.send(codes + '\nCodes used for singleStats command, and perGame command.')
+    botLogic.logCommands(ctx, None)
 
 # Example of the use case for the Player class defined in hockeyPy.
 @client.command()
@@ -839,6 +840,7 @@ async def singleStat(ctx, requestedPlayer, requestedStat, season= botLogic.GetCu
                 description= f'{statName} : {statValue} | Season : {formatSeason}',
                 colour = discord.Colour.from_rgb(r, g, b))
         await ctx.channel.send('', embed= e)
+    botLogic.logCommands(ctx, [playerName, statName, statValue, formatSeason])
 
 @client.command()
 async def whatsNew(ctx):

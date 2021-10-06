@@ -1,16 +1,22 @@
-HockeyStats version: 1.3.0
+HockeyStats version: 1.4.0
 
-THANK YOU ALL SO MUCH FOR HELPING US GET INTO 75 SERVERS! This a pretty huge milestone that we honestly never thought we would achieve!
+HockeyStats bot is now verified on discord! Big thanks to everyone who added the bot to their server, we are now sitting in over 120 servers!
+You may have noticed, we have a logo now! It was time to put a face to the name!
+
+HS-singleStat is intended to replace the dedicated single stat commands (Pgoals, Gwins, etc.). They will remain active until version 1.5 at the latest.
+HS-perGame was poorly documented on upon release in version 1.3.0, this was improved.
 
 We are on github now! Better late then never right? Link to the repo: https://github.com/Special-Sharpie/HockeyStatsBot
-Have you noticed that the bot has been running a little slow as of late? Because we have too. So we decided to alter how the bot is being hosted.
-Previously i had it running on my Raspberry Pi, who served us greatly, however we have now switched to a hosting platform by the name of Pebblehost. If you are keen you may have already noticed the increase in speed.
 
 Command Updates:
-    -Modified some of the commands that require datetime, after uploading the bot to Pebblehost, there were some issues with dates and times, as all the code was set up to work with the mountain timezone, but the sever was UTC.
-    -HS-daySummary can now be given a date as a parameter(YYYY-MM-DD), which will return a summary for that day.
+    No commands changed this time around, just some clean up and support for the Seattle Krakens.
 
 New features:
-    - HS-draftByYear: Returns all draft picks of the requested team from the requested year. Ex: HS-draftByYear NYR 2020.
-    - HS-Pinfo: Returns a suite of information about the requested player.
-    - HS=Tinfo: Returns a suite of information about the requested team. 
+    - HS-statLeader: Returns the highest scorers of the requested stat from high to low, takes the team abbreviation, how many places (top 10, top 5 etc) and the stat, which defaults to points. Example: HS_statLeaders CGY 10 goals
+    - HS-ATplayerStats: Returns the career stats of all active and unactive NHL players. Similar to skaterCareer, only with less data and support for goalies. Example: HS-ATplayerStats JaromeIginla
+    - HS-singleStat: Returns a single requested stat. Takes 3 parameters, a player name, a stat code, and a season. Season is optional, defaulting to the current season. Example: HS-singleStat BlakeColeman faceOffPct 20202021. Use HS-statCodes for all stat codes.
+    - HS-perGame: Returns a player's stat over total games played. Takes two parameters, a player, and a stat. Example: HS-perGame EliasLindholm points. Use HS-statCodes for all stat codes.
+    - HS-statCodes: Sends the stat codes for perGame and singleStat by direct message to the requesting user.
+    - HS-commandHistory - Sends the requesting a user a JSON file with all the command attempts after version 1.4.0.
+
+If you like the bot and would like to support its developement, donate to my Paypal: https://www.paypal.com/paypalme/hockeystatsbot

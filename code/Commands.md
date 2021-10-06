@@ -46,14 +46,16 @@ Commands:
 13.	HS-daySummary – Returns a rundown of all games happening on the requested day. Can be passed an optional parameter Date (YYYY-MM-DD).
 14.	HS-skaterCareer – Returns the entire NHL career of the requested player. Parameters: Player. Example: HS-skaterCareer ZdenoChara. NOTE: This command returns a lot of data.
 15.	HS-next7 – Returns the schedule of the requested team over the following 7 days, giving the user the date and time of the upcoming in that over that period. Parameters: Team Abbreviation. Example: HS-next7 CGY.
-16.	HS-perGame – Takes a player and a stat, returns that player's stat over total games played. The accepted stats: "TOI", "A", "G", "PIM", "SHOTS", "HITS", "PPG", "PPP", "PPTOI", "ETOI", "SHTP", "GWG", "OTG", "SHG", "SHP", "SHTOI", "B", "PM", "P", "SHIFTS"
+16.	HS-perGame – Returns a player's stat over total games played. Takes two parameters, a player, and a stat. Example: HS-perGame EliasLindholm points. Use HS-statCodes for all stat codes.
 17.	HS-setTimezone – Updates the preferred timezone of the requestion server to change the timezone, run the command, and pass it a timezone code. The codes are: EASTERN TIME: "ET", CENTRAL TIME: "CT", MOUNTAIN TIME: "MT", and PACIFIC TIME: "PT"
 18. HS-draftByYear - Returns all draft picks of the requested team from the requested year. Ex: HS-draftByYear NYR 2020.
 19. HS-Pinfo - Returns a suite of information about the requested player.
 20. HS-Tinfo - Returns a suite of information about the requested team.
 21. HS-ATplayerStats - Returns the career stats of all active and unactive NHL players. Similar to skaterCareer, only with less data and support for goalies. Example: HS-ATplayerStats JaromeIginla
-22. HS-commandHistory - Sends the requesting a user a JSON file with all the command attempts after version 1.4.0.
-23.	HS-info – I’m sure you have figured this one out… This command gets you here.
+22. HS-statLeader: Returns the highest scorers of the requested stat from high to low, takes the team abbreviation, how many places (top 10, top 5 etc) and the stat, which defaults to points. Example: HS_statLeaders CGY 10 goals
+23. HS-singleStat: Returns a single requested stat. Takes 3 parameters, a player name, a stat code, and a season. Season is optional, defaulting to the current season. Example: HS-singleStat BlakeColeman faceOffPct 20202021. Use HS-statCodes for all stat codes.
+24. HS-commandHistory - Sends the requesting a user a JSON file with all the command attempts after version 1.4.0.
+25.	HS-info – I’m sure you have figured this one out… This command gets you here.
 Errors:
 There are three main errors that will be raised by HockeyBot, and this section here will explain them and help the end user find their mistake.
 1.	MissingRequiredArguments: This error is raised whenever a required parameter is missing from the command, the best solve for this is to verify you command with the commands in this document in-order to determine which parameter you are missing.

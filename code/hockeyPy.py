@@ -31,11 +31,12 @@ class PeriodError(Exception):
         super().__init__(self.errors[errorCode])
 
 class Player: # Designed to be a parent class, which the end user will inherite from
-    def __init__(self, nameCode):
+    def __init__(self, nameCode, season = GetCurrentSeason()):
         self.nameCode = nameCode # Establishes which player is requested
         self.id = self.getPlayerID(self.nameCode)
-        self.statsUrl = 'https://statsapi.web.nhl.com/api/v1/people/{}/stats?stats=statsSingleSeason&season=20202021'.format(self.id)
-        self.infoUrl = 'https://statsapi.web.nhl.com/api/v1/people/{}'.format(self.id)
+        self.season = season
+        self.statsUrl = f'https://statsapi.web.nhl.com/api/v1/people/{self.id}/stats?stats=statsSingleSeason&season={self.season}'
+        self.infoUrl = f'https://statsapi.web.nhl.com/api/v1/people/{self.id}'
         self.stats = self.getStatsDict(self.statsUrl) # Returns a dictionary of the players stats
         self.info = self.getInfoDict(self.infoUrl) # Returns a dictionary of the players info
         self.team = self.getTeamDict(self.info) # Returns a dictionary of the players team

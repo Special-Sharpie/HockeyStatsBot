@@ -1,0 +1,49 @@
+**Goalie Codes:** (Does not Work for perGame)
+timeOnIce
+ot      
+shutouts
+ties
+wins
+losses
+saves
+powerPlaySaves
+shortHandedSaves
+evenSaves
+shortHandedShots
+evenShots
+powerPlayShots
+savePercentage
+goalAgainstAverage
+games
+gamesStarted
+shotsAgainst
+goalsAgainst
+timeOnIcePerGame
+powerPlaySavePercentage
+shortHandedSavePercentage
+evenStrengthSavePercentage
+
+**Player Codes:**
+timeOnIce
+assists
+goals
+pim
+shots
+games (Does not Work for perGame)
+hits
+powerPlayGoals
+powerPlayPoints
+powerPlayTimeOnIce
+evenTimeOnIce
+penaltyMinutes (Does not Work for perGame)
+faceOffPct (Does not Work for perGame)
+shotPct
+gameWinningGoals
+overTimeGoals
+shortHandedGoals
+shortHandedPoints
+shortHandedTimeOnIce
+blocked
+plusMinus
+points
+shifts

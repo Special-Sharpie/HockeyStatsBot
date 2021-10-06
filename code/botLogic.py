@@ -32,10 +32,63 @@ def logCommands(ctx, response):
     with open('Commandlogs.json', 'r+') as f:
         ls = {"ID": ctx.message.id, "nickname":ctx.author.nick, "channel": ctx.channel.name, "content": ctx.message.content, "error": False ,"response": response}
         data = json.load(f)
-        data['user'][findOppIndex(data['user'], 'userId', ctx.author.id)]['messages'].append(ls)
+        try:
+            data['user'][findOppIndex(data['user'], 'userId', ctx.author.id)]['messages'].append(ls)
+        except:
+            data['user'].append({'userId': ctx.author.id, 'messages':[]})
+            data['user'][findOppIndex(data['user'], 'userId', ctx.author.id)]['messages'].append(ls)
         f.seek(0)
         json.dump(data, f, indent=2)
         f.truncate()
+
+def statProperName(code):
+    codes = {
+        'ot' : 'Over Time Losses',
+        'shutouts' : 'Shutouts',
+        'ties' : 'Ties',
+        'wins' : 'Wins',
+        'losses' : 'Losses',
+        'saves' : 'Saves',
+        'powerPlaySaves' : 'Power Play Saves',
+        'shortHandedSaves' : 'Short Handed Saves',
+        'evenSaves' : 'Even Saves',
+        'shortHandedShots' : 'Short Handed Saves',
+        'evenShots' : 'Even Shots',
+        'powerPlayShots' : 'Power Play Shots',
+        'savePercentage' : 'Save Percentage',
+        'goalAgainstAverage' : 'Goals Againts Average',
+        'gamesStarted' : 'Games Started',
+        'shotsAgainst' : 'Shots Against',
+        'goalsAgainst' : 'Goals Againts',
+        'timeOnIcePerGame' : 'Time On Ice Average',
+        'powerPlaySavePercentage' : 'Power Play Save Percentage',
+        'shortHandedSavePercentage' : 'Short Handed Save Percentage',
+        'evenStrengthSavePercentage' : 'Even Strength Save Percentage',
+        'timeOnIce' : 'Time On Ice',
+        'assists' : 'Assists',
+        'goals' : 'Goals',
+        'pim' : 'Penalty Infraction Minutes',
+        'shots' : 'Shots',
+        'games' : 'Games Played',
+        'hits' : 'Hits',
+        'powerPlayGoals' : 'Power Play Goals',
+        'powerPlayPoints' : 'Power Play Points',
+        'powerPlayTimeOnIce' : 'Power Play Time On Ice',
+        'evenTimeOnIce' : 'Even Time On Ice',
+        'penaltyMinutes' : 'Penalty Minutes',
+        'faceOffPct' : 'Faceoff Percentage',
+        'shotPct' : 'Shot Percentage',
+        'gameWinningGoals' : 'Game Winning Goals',
+        'overTimeGoals' : 'Overtime Goals',
+        'shortHandedGoals' : 'Short Handed Goals',
+        'shortHandedPoints' : 'Short Handed Points',
+        'shortHandedTimeOnIce' : 'Short Handed Time On Ice',
+        'blocked' : 'Blocked',
+        'plusMinus' : 'Plus/Minus',
+        'points' : 'Points',
+        'shifts' : 'Shifts'
+    }
+    return codes[code]
 
 def Chadthing():
     y = random.randint(1, 9)

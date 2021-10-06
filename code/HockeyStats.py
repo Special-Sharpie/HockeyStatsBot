@@ -76,6 +76,7 @@ async def setTimezone(ctx, TZ):
         await ctx.channel.send('Timezone set to {}'.format(TZ))
     else:
         await ctx.channel.send('Yeah that timezone is far to complex for my small brained creator.')
+
 @client.command()
 async def skaterCareer(ctx, player):
     playerID = botLogic.readJSON('Player.json', player)
@@ -789,7 +790,7 @@ async def Tinfo(ctx, abbr):
     botLogic.logCommands(ctx, x)
 
 @client.command()
-async def statLeaders(ctx, abbr, count, stat='points'):
+async def statLeaders(ctx, abbr, count='5', stat='points'):
     team = hockeyPy.Team(abbr)
     teamName = team.GetTeamName()
     results = sl.teamLeaders(abbr, int(count), stat)
@@ -807,6 +808,37 @@ async def ATplayerStats(ctx, name):
     e.add_field(name="Career Totals:", value=stats)
     await ctx.channel.send('', embed= e)
     botLogic.logCommands(ctx, x)
+
+@client.command()
+async def statCodes(ctx):
+    with open("statCodes.txt", "r+") as f:
+        codes = f.read()
+        await ctx.author.send(codes + '\nCodes used for singleStats command, and perGame command.')
+
+# Example of the use case for the Player class defined in hockeyPy.
+@client.command()
+async def singleStat(ctx, requestedPlayer, requestedStat, season= botLogic.GetCurrentSeason()):
+    player = hockeyPy.Player(requestedPlayer, season)
+    playerName = player.GetPlayerName()
+    statValue = player.stats[requestedStat]
+    statName = botLogic.statProperName(requestedStat)
+    if statValue == 1:
+        lastChar = list(statName)[-1]
+        statName = statName.replace(lastChar, '')
+    formatSeason = season[:4] + '-' + season[4:]
+    r, g, b = player.teamColour
+    if type(statValue) == float:
+        e = discord.Embed(
+                        title= f'Single Stat | {playerName}',
+                        description= f'{statName} : {statValue}% | Season : {formatSeason}',
+                        colour = discord.Colour.from_rgb(r, g, b))
+        await ctx.channel.send('', embed= e)
+    else:
+        e = discord.Embed(
+                title= f'Single Stat | {playerName}',
+                description= f'{statName} : {statValue} | Season : {formatSeason}',
+                colour = discord.Colour.from_rgb(r, g, b))
+        await ctx.channel.send('', embed= e)
 
 @client.command()
 async def whatsNew(ctx):
@@ -836,6 +868,10 @@ async def commandHistory(ctx):
         f.seek(0)
         json.dump(data, f, indent=2)
         f.truncate()
+
+@client.command()
+async def donate(ctx):
+    await ctx.author.send('Donate here: https://www.paypal.com/paypalme/hockeystatsbot')
 
 #Runs the bot
 with open('token.txt', 'r+') as f:

@@ -75,5 +75,5 @@ def skaterStats(player):
         f.truncate(0)
     return ls
 
-#print(len(CareerStats('8465009')[0]))
+#print(skaterStats('8446651'))
 

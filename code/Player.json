@@ -267,7 +267,7 @@
     "HaydnFleury": 8477938,
     "WarrenFoegele": 8477998,
     "LucasWallmark": 8478027,
-    "SebastianAho": 8478427,
+    "SebastianAhoFIN": 8478427,
     "MartinNecas": 8480039,
     "AndreiSvechnikov": 8480830,
     "BrianBoyle": 8470619,
@@ -1304,5 +1304,8 @@
     "JordanGross": 8480913,
     "JanJenik": 8480890,
     "MichaelBunting": 8478047,
-    "DrydenHunt": 8478211
+    "DrydenHunt": 8478211,
+    "RobinSalo": 8480071,
+    "SampoRanta": 8480846,
+    "SebastianAhoSWE": 8480222
 }

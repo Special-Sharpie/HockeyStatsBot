@@ -4,26 +4,26 @@ import pprint as p
 import botLogic as bot
 
 statCodes = {
-    "TOI" : ["timeOnIce", "Time On Ice", True],
-    "A" : ["assists", "Assists", False],
-    "G" : ["goals", "Goals", False],
-    "PIM" : ["pim", "Penalty Minutes", False],
-    "SHOTS" : ["shots", "Shots", False],
-    "HITS" : ["hits", "Hits", False],
-    "PPG" : ["powerPlayGoals", "Power Play Goals", False],
-    "PPP" : ["powerPlayPoints", "Power Play Points", False],
-    "PPTOI" : ["powerPlayTimeOnIce", "Power Play Time On Ice", True],
-    "ETOI" : ["evenTimeOnIce", "Even Time On Ice", True],
-    "SHTP" : ["shotPct", "Shot Percentage", False],
-    "GWG" : ["gameWinningGoals", "Game Winning Goals", False],
-    "OTG" : ["overTimeGoals", "Over Time Goals", False],
-    "SHG" : ["shortHandedGoals", "Short Handed Goals", False],
-    "SHP" : ["shortHandedPoints", "Short Handed Points", False],
-    "SHTOI" : ["shortHandedTimeOnIce", "Short Handed Time On Ice", True],
-    "B" : ["blocked", "Shots Blocked", False],
-    "PM" : ["plusMinus", "Plus Minus", False],
-    "P" : ["points", "Points", False],
-    "SHIFTS" : ["shifts", "Shifts", False]
+    "timeOnIce" : ["timeOnIce", "Time On Ice", True],
+    "assists" : ["assists", "Assists", False],
+    "goals" : ["goals", "Goals", False],
+    "pim" : ["pim", "Penalty Minutes", False],
+    "shots" : ["shots", "Shots", False],
+    "hits" : ["hits", "Hits", False],
+    "powerPlayGoals" : ["powerPlayGoals", "Power Play Goals", False],
+    "powerPlayPoints" : ["powerPlayPoints", "Power Play Points", False],
+    "powerPlayTimeOnIce" : ["powerPlayTimeOnIce", "Power Play Time On Ice", True],
+    "evenTimeOnIce" : ["evenTimeOnIce", "Even Time On Ice", True],
+    "shotPct" : ["shotPct", "Shot Percentage", False],
+    "gameWinningGoals" : ["gameWinningGoals", "Game Winning Goals", False],
+    "overTimeGoals" : ["overTimeGoals", "Over Time Goals", False],
+    "shortHandedGoals" : ["shortHandedGoals", "Short Handed Goals", False],
+    "shortHandedPoints" : ["shortHandedPoints", "Short Handed Points", False],
+    "shortHandedTimeOnIce" : ["shortHandedTimeOnIce", "Short Handed Time On Ice", True],
+    "blocked" : ["blocked", "Shots Blocked", False],
+    "plusMinus" : ["plusMinus", "Plus Minus", False],
+    "points" : ["points", "Points", False],
+    "shifts" : ["shifts", "Shifts", False]
 }
 
 def findColon(time):

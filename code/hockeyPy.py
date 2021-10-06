@@ -31,11 +31,12 @@ class PeriodError(Exception):
         super().__init__(self.errors[errorCode])
 
 class Player: # Designed to be a parent class, which the end user will inherite from
-    def __init__(self, nameCode):
+    def __init__(self, nameCode, season = GetCurrentSeason()):
         self.nameCode = nameCode # Establishes which player is requested
         self.id = self.getPlayerID(self.nameCode)
-        self.statsUrl = 'https://statsapi.web.nhl.com/api/v1/people/{}/stats?stats=statsSingleSeason&season=20202021'.format(self.id)
-        self.infoUrl = 'https://statsapi.web.nhl.com/api/v1/people/{}'.format(self.id)
+        self.season = season
+        self.statsUrl = f'https://statsapi.web.nhl.com/api/v1/people/{self.id}/stats?stats=statsSingleSeason&season={self.season}'
+        self.infoUrl = f'https://statsapi.web.nhl.com/api/v1/people/{self.id}'
         self.stats = self.getStatsDict(self.statsUrl) # Returns a dictionary of the players stats
         self.info = self.getInfoDict(self.infoUrl) # Returns a dictionary of the players info
         self.team = self.getTeamDict(self.info) # Returns a dictionary of the players team
@@ -43,7 +44,7 @@ class Player: # Designed to be a parent class, which the end user will inherite 
         self.teamColour = self.getTeamColour(self.teamId)
 
     def getPlayerID(self, PlayerName):
-        with open('Player.json', 'r+') as f:
+        with open('AllTimePlayer.json', 'r+') as f:
             data = json.load(f)
             return(data[PlayerName])
     
@@ -65,6 +66,11 @@ class Player: # Designed to be a parent class, which the end user will inherite 
     def getTeamDict(self, info):
         team = info['currentTeam']
         return team
+    
+    def GetPlayerName(self):
+        name_url = requests.get('https://statsapi.web.nhl.com/api/v1/people/' + str(self.id))
+        FullName = name_url.json()['people'][0]['fullName']
+        return FullName
 
 
 class Team: # Designed to be a parent class, which the end user will inherite from
@@ -90,6 +96,11 @@ class Team: # Designed to be a parent class, which the end user will inherite fr
         except:
             raise TeamError("InvalidTeamAbbr")
     
+    def GetTeamName(self):
+        url = requests.get('https://statsapi.web.nhl.com/api/v1/teams/' + str(self.id))
+        name = url.json()['teams'][0]['name']
+        return name
+
     def getWinLoss(self):
         win = self.stats['wins']
         loss = self.stats['losses']
@@ -182,9 +193,8 @@ class MatchUp: # Returns most of the endpoints for gathering game data. The data
         self.away = self.teams['away']['team']
 
 
-    def getGameId(self, schedule): # Returns the ID (or as the NHL API refers: PK) of the game of the passed date and team. Raises a .
-        try:
-            
+    def getGameId(self, schedule): # Returns the ID (or as the NHL API refers: PK) of the game of the passed date and team.
+        try:          
             pk = schedule['dates'][0]['games'][0]['gamePk']
             return str(pk)
         except: 

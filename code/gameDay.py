@@ -13,7 +13,6 @@ tz={
 
 def gday(ID, TZ):
     # url for currnet day hockey game
-    #g = gameStats(ID)
     lst = []
     preList = []
     postList = []

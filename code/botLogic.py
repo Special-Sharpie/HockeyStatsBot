@@ -28,9 +28,9 @@ def clearJSON(file, deletedValue):
         json.dumps(data)
         f.truncate()
 
-def logCommands(ctx, response):
+def logCommands(ctx, response, error: False):
     with open('Commandlogs.json', 'r+') as f:
-        ls = {"ID": ctx.message.id, "nickname":ctx.author.nick, "channel": ctx.channel.name, "content": ctx.message.content, "error": False ,"response": response}
+        ls = {"ID": ctx.message.id, "nickname":ctx.author.nick, "channel": ctx.channel.name, "content": ctx.message.content, "error": error  ,"response": response}
         data = json.load(f)
         try:
             data['user'][findOppIndex(data['user'], 'userId', ctx.author.id)]['messages'].append(ls)

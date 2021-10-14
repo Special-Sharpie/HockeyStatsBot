@@ -44,7 +44,7 @@ Commands:
 11.	HS-leagueStandings – This command returns the standings for the entire league, and can be run for any season in NHL history (The command will return the 19171918 season… pretty neat, huh?). This command has no required parameters, however, in order to get prior seasons standings, a season must be provided (Example: 20182019).
 12.	HS-playoffStandings – This command returns the data of any requested playoff series, from any round, during any season. It will return the team matchup, as well as the record for the series, regardless of whether it is complete or not. This command requires three parameters, those being a team abbreviation, the round of the playoffs, and the season (Example: CGY R1 20182019). There are 5 different round codes that can be used, the first being the one and only exception as it only works for the 20192020 season, they are: “SCQ”, “R1”, “R2”, “CF”, “SCF”. The abbreviation that must be provided is the three-letter code assigned to every team (Example: CGY, TBL, ANA, MTL).
 13.	HS-daySummary – Returns a rundown of all games happening on the requested day. Can be passed an optional parameter Date (YYYY-MM-DD).
-14.	HS-skaterCareer – Returns the entire NHL career of the requested player. Parameters: Player. Example: HS-skaterCareer ZdenoChara. NOTE: This command returns a lot of data.
+14.	HS-skaterCareer – Returns the entire NHL career of the requested player. Parameters: Player. Example: HS-skaterCareer ZdenoChara. NOTE: This command returns a lot of data, and only works with active players. Use HS-ATplayerStats for non active players.
 15.	HS-next7 – Returns the schedule of the requested team over the following 7 days, giving the user the date and time of the upcoming in that over that period. Parameters: Team Abbreviation. Example: HS-next7 CGY.
 16.	HS-perGame – Returns a player's stat over total games played. Takes two parameters, a player, and a stat. Example: HS-perGame EliasLindholm points. Use HS-statCodes for all stat codes.
 17.	HS-setTimezone – Updates the preferred timezone of the requestion server to change the timezone, run the command, and pass it a timezone code. The codes are: EASTERN TIME: "ET", CENTRAL TIME: "CT", MOUNTAIN TIME: "MT", and PACIFIC TIME: "PT"
@@ -56,6 +56,7 @@ Commands:
 23. HS-singleStat: Returns a single requested stat. Takes 3 parameters, a player name, a stat code, and a season. Season is optional, defaulting to the current season. Example: HS-singleStat BlakeColeman faceOffPct 20202021. Use HS-statCodes for all stat codes.
 24. HS-commandHistory - Sends the requesting a user a JSON file with all the command attempts after version 1.4.0.
 25.	HS-info – I’m sure you have figured this one out… This command gets you here.
+
 Errors:
 There are three main errors that will be raised by HockeyBot, and this section here will explain them and help the end user find their mistake.
 1.	MissingRequiredArguments: This error is raised whenever a required parameter is missing from the command, the best solve for this is to verify you command with the commands in this document in-order to determine which parameter you are missing.

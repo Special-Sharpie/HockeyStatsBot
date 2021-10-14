@@ -37,7 +37,7 @@ async def on_ready():
 
 @client.event
 async def on_command_error(ctx, error):
-    botLogic.logCommands(ctx, str(error))
+    botLogic.logCommands(ctx, str(error), True)
     #Error Handling!
     if isinstance(error, commands.MissingRequiredArgument):
         e = discord.Embed(title = "An Error Has Occured!", description='Rquested command is missing one more key parameters.\nPlease retry the commmand with the proper paramerters. \n Run "?info", for more information!', colour= discord.Colour.from_rgb(0, 0, 0))
@@ -129,7 +129,7 @@ async def lifeWL(ctx, ABBR1, ABBR2):
 
 
 @client.command()
-async def Pstats(ctx, PlayerName, playoff= 'R', season= botLogic.GetCurrentSeason()):
+async def Pstats(ctx, PlayerName, season= botLogic.GetCurrentSeason(), playoff= 'R',):
     playerID = botLogic.readJSON('Player.json', PlayerName)
     if playoff == "R":
         x = playerStats.stats(playerID, playoff, season)

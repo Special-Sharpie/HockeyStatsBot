@@ -5,8 +5,8 @@ import pprint
 import botLogic
 def winloss(FranID1, FranID2):
     ls = []
-    teamA = botLogic.readJSON('franID.json', FranID1)
-    teamB = botLogic.readJSON('franID.json', FranID2)
+    teamA = botLogic.readJSON('franId.json', FranID1)
+    teamB = botLogic.readJSON('franId.json', FranID2)
     url = requests.get('https://records.nhl.com/site/api/all-time-record-vs-franchise?cayenneExp=teamFranchiseId=' + str(teamA))
     indexPos = url.json()['data']
     record = url.json()['data'][botLogic.findOppIndex(indexPos, 'opponentFranchiseId', int(teamB))]

@@ -110,7 +110,7 @@ def addToDatabase(MemberID, tier):
         f.truncate()
 
 def GetPlayerID(PlayerName):
-    with open('Player.json', 'r+') as f:
+    with open('AllTimePlayer.json', 'r+') as f:
         data = json.load(f)
         return(data[PlayerName])
 

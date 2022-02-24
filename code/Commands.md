@@ -9,31 +9,56 @@ Commands:
 5.	(Deprecated, likely to be removed in future version.)In-depth player stats. This is a collection of commands with exactly same requirements (except the season type code) as HS-Pstats, only one stat is returned opposed to all.
     A.	Goalies:
         a.	HS-Gwins – Returns total wins for the season.
+        
         b.	HS-Gloss – Returns total losses for the season.
+        
         c.	HS-Gotl – Return total overtime losses for the season.
+        
         d.	HS-Gshutout – Returns total shutouts for the season.
+        
         e.	HS-Gsaves – Returns total saves for the season.
-        f.	HS-GSavep – Returns Save Percentage for the season.
+        
+        f.	HS-Gsavep – Returns Save Percentage for the season.
+        
         g.	HS-Ggaa – Returns Goals Against Average for the season.
+        
         h.	HS-Ggoala – Returns total Goals Against for the season.
+        
         i.	HS-Gshota – Returns total shots face for the season.
+        
         j.	HS-Ggames – Returns total games played for the season.
+        
         k.	HS-Gtoi – Returns total time on ice for the season.
+        
     B.	Skaters:
         a.	HS-Pgoals – Returns total goals for the season.
+        
         b.	HS-Passists – Returns total assists for the season.
+        
         c.	HS-Ppoints – Returns total points for the season.
+        
         d.	HS-Pgplayed – Return total games played for the season.
+        
         e.	HS-Pshots – Returns total shots taken during the season.
+        
         f.	HS-Pppgoals – Returns total Power Play goals for the season.
+        
         g.	HS-Ppppoints – Returns total Power Play points for the season.
+        
         h.	HS-Potgoals – Returns total Overtime goals for the season.
+        
         i.	HS-Pshgoals – Returns total Short Handed goals for the season.
+        
         j.	HS-Pgwgoals – Returns total Game Winning goals for the season.
+        
         k.	HS-Pplusminus – Returns the players Plus/Minus rating for the season.
+        
         l.	HS-Phits – Returns total Hits of the season.
+        
         m.	HS-Pbshots – Returns total Blocked Shots for the season.
+        
         n.	HS-Ppenalty – Returns total Penalty Minutes for the season.
+        
         o.	HS-Ptoi – Returns total Time On Ice for the season.
 
 6.	HS-Gnext – This command returns the next game date for the requested team, checking the next 10 days from the date the command was run. It only requires one parameter, a team Abbreviation. Example: HS-Gnext CGY

@@ -13,7 +13,7 @@ Commands:
         c.	HS-Gotl – Return total overtime losses for the season.
         d.	HS-Gshutout – Returns total shutouts for the season.
         e.	HS-Gsaves – Returns total saves for the season.
-        f.	HS-GSavep – Returns Save Percentage for the season.
+        f.	HS-Gsavep – Returns Save Percentage for the season.
         g.	HS-Ggaa – Returns Goals Against Average for the season.
         h.	HS-Ggoala – Returns total Goals Against for the season.
         i.	HS-Gshota – Returns total shots face for the season.

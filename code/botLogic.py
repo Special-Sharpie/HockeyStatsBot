@@ -28,19 +28,6 @@ def clearJSON(file, deletedValue):
         json.dumps(data)
         f.truncate()
 
-def logCommands(ctx, response, error: False):
-    with open('Commandlogs.json', 'r+') as f:
-        ls = {"ID": ctx.message.id, "nickname":ctx.author.nick, "channel": ctx.channel.name, "content": ctx.message.content, "error": error  ,"response": response}
-        data = json.load(f)
-        try:
-            data['user'][findOppIndex(data['user'], 'userId', ctx.author.id)]['messages'].append(ls)
-        except:
-            data['user'].append({'userId': ctx.author.id, 'messages':[]})
-            data['user'][findOppIndex(data['user'], 'userId', ctx.author.id)]['messages'].append(ls)
-        f.seek(0)
-        json.dump(data, f, indent=2)
-        f.truncate()
-
 def statProperName(code):
     codes = {
         'ot' : 'Over Time Losses',

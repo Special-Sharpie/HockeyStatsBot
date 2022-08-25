@@ -37,7 +37,6 @@ async def on_ready():
 
 @client.event
 async def on_command_error(ctx, error):
-    botLogic.logCommands(ctx, str(error), True)
     #Error Handling!
     if isinstance(error, commands.MissingRequiredArgument):
         e = discord.Embed(title = "An Error Has Occured!", description='Rquested command is missing one more key parameters.\nPlease retry the commmand with the proper paramerters. \n Run "?info", for more information!', colour= discord.Colour.from_rgb(0, 0, 0))
@@ -99,20 +98,18 @@ async def teamWL(ctx, ABBR):
     e = discord.Embed(title= 'Single Season Win/Loss!', description= 'The ' + season[:4] + '-' + season[4:] +' Win/Loss record for the ' + x[0], colour= discord.Colour.from_rgb(y[0], y[1], y[2]))
     e.add_field(name= 'Record:', value= str(x[2]) + '/' + str(x[3]) + '/' + str(x[4]) + ' in ' + str(x[1]) + ' games, tallying ' + str(x[5]) + ' points.')
     await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def currentSeason(ctx):
     x = botLogic.GetCurrentSeason()
     await ctx.channel.send("Its currently the {}-{} season".format(x[:4], x[4:]))
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def teamID(ctx):
     with open('TeamID.txt', 'r') as f:
         x = f.read()
         await ctx.author.send(x)
-        botLogic.logCommands(ctx, x)
+
 
 @client.command()
 async def lifeWL(ctx, ABBR1, ABBR2):
@@ -125,7 +122,6 @@ async def lifeWL(ctx, ABBR1, ABBR2):
     e.add_field(name= 'Road Record:', value= str(x[6]) + '/' + str(x[7]) + '/' + str(x[8]) + '/' + str(x[9]), inline= False)
     e.add_field(name= 'Total Record:', value= str(x[10]) + '/' + str(x[11]) + '/' + str(x[12]) + '/' + str(x[13]), inline= False)
     await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, x)
 
 
 @client.command()
@@ -141,7 +137,6 @@ async def Pstats(ctx, PlayerName, season= botLogic.GetCurrentSeason(), playoff= 
         e = discord.Embed(title= 'Post Season Stats - ' + season[4:] + ' Stanley Cup Playoffs', description= 'Stats for ' + x[0], colour= discord.Colour.from_rgb(0,0,0))
         e.add_field(name='Stats:', value= x[1], inline= False)
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def perGame(ctx, player, stat, season= botLogic.GetCurrentSeason()):
@@ -155,7 +150,6 @@ async def perGame(ctx, player, stat, season= botLogic.GetCurrentSeason()):
                     colour= discord.Colour.from_rgb(0,0,0)
                     )
     await ctx.channel.send('', embed=e)
-    botLogic.logCommands(ctx, x)
 
 #Commands for individual PLayer/Goalie Stats
 
@@ -615,7 +609,6 @@ async def Gnext(ctx, ABBR):
     x = next.next(teamID, TZ)
     e = discord.Embed(title= 'Next Game!', description= x, colour= discord.Colour.from_rgb(r, g, b))
     await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def next7(ctx, ABBR):
@@ -633,7 +626,6 @@ async def next7(ctx, ABBR):
         else:
             e.add_field(name=i, value='{}'.format(date), inline=False)
     await ctx.channel.send('', embed=e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def Glast(ctx, ABBR):
@@ -655,7 +647,6 @@ async def Glast(ctx, ABBR):
             for i in m:
                 e.add_field(name='Goal', value=i, inline=False)
     await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def Gtoday(ctx, ABBR):
@@ -691,28 +682,24 @@ async def Gtoday(ctx, ABBR):
             for i in m:
                 e.add_field(name='Goal', value=i, inline=False)
         await ctx.channel.send('', embed=e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def divStandings(ctx, div):
     x = standings.div(div)
     e = discord.Embed(title= x[0][:4] + '-' + x[0][4:] +' '+ div + ' | Division Standings', description= x[1], colour= discord.Colour.from_rgb(0, 0, 0))
     await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def confStandings(ctx, conf):
     x = standings.conf(conf)
     e = discord.Embed(title= x[0][:4] + '-' + x[0][4:] +' '+ conf + ' Conference Standings', description= x[1], colour= discord.Colour.from_rgb(0, 0, 0))
     await ctx.channel.send('', embed=e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def leagueStandings(ctx, season= botLogic.GetCurrentSeason()):
     x = standings.league(season)
     e = discord.Embed(title= x[0][:4] + '-' + x[0][4:] + ' | League Standings', description= x[1], colour= discord.Colour.from_rgb(0, 0, 0))
     await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def SCFwinner(ctx, season):
@@ -722,7 +709,6 @@ async def SCFwinner(ctx, season):
     e.add_field(name= 'Champion:', value= 'The ' + x[2] + ' won the Stanley Cup', inline= False)
     e.add_field(name= 'Series Record:', value= x[3] + ' Wins, ' + x[4] + ' Losses', inline= True)
     await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def playoffStandings(ctx, abbr, round, season):
@@ -732,7 +718,6 @@ async def playoffStandings(ctx, abbr, round, season):
     e.add_field(name = 'Match Up:', value = x[2] + ' VS. ' + x[3], inline= False)
     e.add_field(name = 'Series Record:', value = x[2] + ': ' + str(x[4]) + ' ' + x[3] + ': ' + str(x[5]), inline = True)
     await ctx.channel.send('', embed = e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def daySummary(ctx, RequestDate= None):
@@ -753,7 +738,6 @@ async def daySummary(ctx, RequestDate= None):
             e.add_field(name= z[0] + ' VS. ' + z[1], value=z[2] + ' VS. ' + z[3] + ' | ' + z[4], inline=False)
         i += 1
     await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def draftByYear(ctx, team, year= 2020):
@@ -787,7 +771,6 @@ async def Tinfo(ctx, abbr):
     r, g, b = colour
     e = discord.Embed(title='Team Info | {}'.format(name), description=info, colour= discord.Colour.from_rgb(r, g, b))
     await ctx.channel.send('', embed=e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def statLeaders(ctx, abbr, count='5', stat='points'):
@@ -807,7 +790,6 @@ async def ATplayerStats(ctx, name):
     e = discord.Embed(title=f"All time player Stats | {fullname}", description=f"Active from {firstYear} to {lastYear}", colour=discord.Colour.from_rgb(0,0,0))
     e.add_field(name="Career Totals:", value=stats)
     await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, x)
 
 @client.command()
 async def statCodes(ctx):

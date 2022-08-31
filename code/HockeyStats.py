@@ -38,6 +38,7 @@ async def on_ready():
 @client.event
 async def on_command_error(ctx, error):
     #Error Handling!
+    print(error)
     if isinstance(error, commands.MissingRequiredArgument):
         e = discord.Embed(title = "An Error Has Occured!", description='Rquested command is missing one more key parameters.\nPlease retry the commmand with the proper paramerters. \n Run "?info", for more information!', colour= discord.Colour.from_rgb(0, 0, 0))
         e.add_field(name= 'Error Code:', value= 'MissingRequiredArgument', inline= True)

@@ -169,7 +169,6 @@ async def Gotl(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' lost ' + str(goalieOT) + ' games in Overtime during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieOT)
     
 @client.command()
 async def Gwins(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -186,7 +185,6 @@ async def Gwins(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' won ' + str(goalieWins) + ' games in the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieWins)
 
 @client.command()
 async def Gloss(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -203,7 +201,6 @@ async def Gloss(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' lost ' + str(goalieLosses) + ' games in the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieLosses)
 
 @client.command()
 async def Gsaves(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -220,7 +217,6 @@ async def Gsaves(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' made ' + str(goalieSaves) + ' save in the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieSaves)
 
 @client.command()
 async def Gtoi(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -238,7 +234,6 @@ async def Gtoi(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' played a total of ' + str(goalieTOI) + ' minutes during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieTOI)
 
 @client.command()
 async def Gshutout(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -255,7 +250,6 @@ async def Gshutout(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' made ' + str(goalieSO) + ' Shutouts in the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieSO)
 
 @client.command()
 async def Gsavep(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -272,7 +266,6 @@ async def Gsavep(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' had a ' + str(goalieSP) + ' Save Percentage in the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieSP)
 
 @client.command()
 async def Ggaa(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -289,7 +282,6 @@ async def Ggaa(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' had a ' + str(goalieGAA) + ' Goal Against Average in the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieGAA)
 
 
 @client.command()
@@ -307,7 +299,6 @@ async def Ggames(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' played in ' + str(goalieGames) + ' games in the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieGames)
 
 @client.command()
 async def Gshota(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -324,7 +315,6 @@ async def Gshota(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' faced ' + str(goalieSA) + ' shots in the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieSA)
 
 @client.command()
 async def Ggoala(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -341,7 +331,6 @@ async def Ggoala(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' was scored on ' + str(goalieGA) + ' times in the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, goalieGA)
 
 #Players:
 @client.command()
@@ -359,7 +348,6 @@ async def Pgoals(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' scored ' + str(playerGoal) + ' goals during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerGoal)
 
 @client.command()
 async def Passists(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -376,7 +364,6 @@ async def Passists(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' had ' + str(playerAssists) + ' assists during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerAssists)
 
 @client.command()
 async def Ppoints(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -393,8 +380,6 @@ async def Ppoints(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' had ' + str(playerPoints) + ' points during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerPoints)
-
 @client.command()
 async def Pshots(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
     playerID = botLogic.readJSON('Player.json', PlayerName)
@@ -410,7 +395,6 @@ async def Pshots(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' took ' + str(playerShots) + ' shots during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerShots)
 
 @client.command()
 async def Pplusminus(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -427,7 +411,6 @@ async def Pplusminus(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' had a plus/minus rating of ' + str(playerPM) + ' during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerPM)
 
 @client.command()
 async def Ptoi(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -444,7 +427,6 @@ async def Ptoi(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' played a total of ' + str(playerTOI) + ' minutes during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerTOI)
 
 @client.command()
 async def Pgplayed(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -461,7 +443,6 @@ async def Pgplayed(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' played a total of ' + str(playerGames) + ' games during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerGames)
 
 @client.command()
 async def Pppgoals(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -478,7 +459,6 @@ async def Pppgoals(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' scored ' + str(playerPPG) + ' power play goals during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerPPG)
 
 @client.command()
 async def Ppppoints(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -495,7 +475,6 @@ async def Ppppoints(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' scored ' + str(playerPPP) + ' power play points during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerPPP)
 
 @client.command()
 async def Pgwgoals(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -512,8 +491,6 @@ async def Pgwgoals(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' scored ' + str(playerGWG) + ' game winning goals during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerGWG)
-
 
 @client.command()
 async def Ppenalty(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -530,7 +507,6 @@ async def Ppenalty(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' collected ' + str(playerPIM) + ' penalty minutes during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerPIM)
 
 @client.command()
 async def Phits(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -547,7 +523,6 @@ async def Phits(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' threw ' + str(playerHits) + ' hits during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerHits)
 
 @client.command()
 async def Pbshots(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -564,7 +539,6 @@ async def Pbshots(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' had blocked ' + str(playerBlocked) + ' blocked shots during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerBlocked)
 
 @client.command()
 async def Potgoals(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -581,7 +555,6 @@ async def Potgoals(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' scored ' + str(playerOTgoals) + ' Overtime goals during the ' + season[:4] +'-'+ season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerOTgoals)
 
 @client.command()
 async def Pshgoals(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
@@ -598,7 +571,6 @@ async def Pshgoals(ctx, PlayerName, season= botLogic.GetCurrentSeason()):
                          description=botLogic.GetPlayerName(playerID) + ' scored ' + str(playerShortHanded) + ' Short Handed goals during the ' + season[:4] + '-' + season[4:] + ' season',
                           colour=discord.Colour.from_rgb(0, 0, 0))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, playerShortHanded)
 
 @client.command()
 async def Gnext(ctx, ABBR):
@@ -750,7 +722,6 @@ async def draftByYear(ctx, team, year= 2020):
         for draftee in results[res]:
             e.add_field(name=res, value=draftee, inline= False)
     await ctx.channel.send('', embed=e)
-    botLogic.logCommands(ctx, results)
 
 @client.command()
 async def Pinfo(ctx, playerName):
@@ -762,7 +733,6 @@ async def Pinfo(ctx, playerName):
     e.add_field(name='Personal', value=personal)
     e.add_field(name='Team Based', value=teamBased)
     await ctx.channel.send('', embed=e)
-    botLogic.logCommands(ctx, [personal, teamBased])
 
 @client.command()
 async def Tinfo(ctx, abbr):
@@ -780,7 +750,6 @@ async def statLeaders(ctx, abbr, count='5', stat='points'):
     r, g, b = team.getTeamColour(team.id)
     e = discord.Embed(title=f'{teamName} | {stat[0].upper() + stat[1:-1]} Leaders', description=results, colour= discord.Colour.from_rgb(r, g, b))
     await ctx.channel.send('', embed=e)
-    botLogic.logCommands(ctx, results)
 
 @client.command()
 async def ATplayerStats(ctx, name):
@@ -796,7 +765,6 @@ async def statCodes(ctx):
     with open("statCodes.txt", "r+") as f:
         codes = f.read()
         await ctx.author.send(codes + '\nCodes used for singleStats command, and perGame command.')
-    botLogic.logCommands(ctx, None)
 
 # Example of the use case for the Player class defined in hockeyPy.
 @client.command()
@@ -822,7 +790,6 @@ async def singleStat(ctx, requestedPlayer, requestedStat, season= botLogic.GetCu
                 description= f'{statName} : {statValue} | Season : {formatSeason}',
                 colour = discord.Colour.from_rgb(r, g, b))
         await ctx.channel.send('', embed= e)
-    botLogic.logCommands(ctx, [playerName, statName, statValue, formatSeason])
 
 @client.command()
 async def whatsNew(ctx):

@@ -1,6 +1,8 @@
 import json
 import discord
 from discord.ext import commands
+from discord_slash import SlashCommand
+from discord_slash.utils.manage_commands import create_option
 import requests
 import datetime
 import pytz
@@ -27,6 +29,7 @@ import nonActivePlayerCareer as non
 
 #Variables
 client = commands.Bot(command_prefix='HS-')
+slash = SlashCommand(client, sync_commands=True)
 game = discord.Game("HS-donate | HS-whatsNew | HS-setTimezone")
 
 #Events:
@@ -56,9 +59,10 @@ async def on_command_error(ctx, error):
         await ctx.channel.send('', embed=e)
 
 #Commands
+@slash.slash(name="serverCount", description="Show how many servers the bot provideds hockey stats to!", options=[])
 @client.command()
 async def serverCount(ctx):
-    await ctx.channel.send(f'Currently providing hockey stats to {len(client.guilds)} servers!')
+    await ctx.reply(f'Currently providing hockey stats to {len(client.guilds)} servers!')
 
 @client.event
 async def on_guild_join(ctx):
@@ -724,16 +728,18 @@ async def draftByYear(ctx, team, year= 2020):
             e.add_field(name=res, value=draftee, inline= False)
     await ctx.channel.send('', embed=e)
 
+@slash.slash(name="pinfo", description="Provides information about the requested player!", options= [create_option(name="playername", description="Name of an active NHL player", option_type=3, required=True)])
 @client.command()
-async def Pinfo(ctx, playerName):
-    playerID = botLogic.GetPlayerID(playerName)
+async def Pinfo(ctx, playername):
+    playerID = botLogic.GetPlayerID(playername)
     fullName = botLogic.GetPlayerName(playerID)
-    personal = playerInfo.playerInfo(playerName)
-    teamBased = playerInfo.playerTeamInfo(playerName)
+    personal = playerInfo.playerInfo(playername)
+    teamBased = playerInfo.playerTeamInfo(playername)
     e = discord.Embed(title='Player Info | {}'.format(fullName), colour=discord.Colour.from_rgb(0,0,0))
     e.add_field(name='Personal', value=personal)
-    e.add_field(name='Team Based', value=teamBased)
-    await ctx.channel.send('', embed=e)
+    e.add_field(name='Team', value=teamBased)
+    await ctx.reply('', embed=e)
+    # await ctx.reply("")
 
 @client.command()
 async def Tinfo(ctx, abbr):
@@ -743,14 +749,36 @@ async def Tinfo(ctx, abbr):
     e = discord.Embed(title='Team Info | {}'.format(name), description=info, colour= discord.Colour.from_rgb(r, g, b))
     await ctx.channel.send('', embed=e)
 
+@slash.slash(
+    name="statleaders", 
+    description="Provides the requested number of scoring leaders of the requested stat, for the requested team!", 
+    options= [
+        create_option(
+            name="abbr", 
+            description="NHL team abbreviation>", 
+            option_type=3, 
+            required=True
+        ), create_option(
+            name="count",
+            description="Changes how many players a provided. Defaults to 5." ,
+            option_type=4,
+            required=False 
+        ), create_option(
+            name="stat",
+            description="Changes that stat the players are ranked by. Defaults to points." ,
+            option_type=3,
+            required=False 
+        )
+    ])
 @client.command()
-async def statLeaders(ctx, abbr, count='5', stat='points'):
+async def statLeaders(ctx, abbr, count=5, stat='points'):
+    await ctx.defer()
     team = hockeyPy.Team(abbr)
     teamName = team.GetTeamName()
-    results = sl.teamLeaders(abbr, int(count), stat)
+    results = sl.teamLeaders(abbr, count, stat)
     r, g, b = team.getTeamColour(team.id)
     e = discord.Embed(title=f'{teamName} | {stat[0].upper() + stat[1:-1]} Leaders', description=results, colour= discord.Colour.from_rgb(r, g, b))
-    await ctx.channel.send('', embed=e)
+    await ctx.reply('', embed=e)
 
 @client.command()
 async def ATplayerStats(ctx, name):

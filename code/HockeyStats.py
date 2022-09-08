@@ -97,8 +97,8 @@ async def skaterCareer(ctx, player):
         await  ctx.channel.send('Career Stats - {}\n'.format(playerName) + x[0] +'\n' + x[1] + '\n' + x[2])
 
 @client.command()
-async def teamWL(ctx, ABBR):
-    ID = botLogic.readJSON('ABBRid.json', ABBR)
+async def teamWL(ctx, abbr):
+    ID = botLogic.readJSON('ABBRid.json', abbr)
     y = botLogic.readJSON('TeamColour.json', ID)
     season = botLogic.GetCurrentSeason()
     x = teamWinLoss.WinLossTeam(ID)
@@ -632,22 +632,22 @@ async def Glast(ctx, ABBR):
     description="Provides all the details needed for the requested team's current day match up!", 
     options= [
         create_option(
-            name="abba", 
+            name="abbr", 
             description="NHL team abbreviation.", 
             option_type=3, 
             required=True,
             )
         ])
 @client.command()
-async def Gtoday(ctx, ABBR):
-    ID = botLogic.readJSON('ABBRid.json', ABBR)
-    guildID = ctx.message.guild.id
+async def Gtoday(ctx, abbr):
+    ID = botLogic.readJSON('ABBRid.json', abbr)
+    guildID = ctx.guild.id
     TZ = botLogic.readJSON('ServerTimezone.json', str(guildID))
     r, g, b = botLogic.readJSON('TeamColour.json', ID)
     x = gameDay.gday(ID, TZ)
     if x[0] < '3':
         e = discord.Embed(title= 'Game Day!', description= x[1] + ' VS. ' + x[2] + ' at ' + x[3], colour= discord.Colour.from_rgb(r, g, b))
-        await ctx.channel.send('', embed= e)
+        await ctx.reply('', embed= e)
     elif x[0] > '4':
         z = botLogic.gameStats(ID)
         e = discord.Embed(title='Game Day!', description= x[1] + ' VS. ' + x[2], colour=discord.Colour.from_rgb(r, g, b))
@@ -660,7 +660,7 @@ async def Gtoday(ctx, ABBR):
         if len(m) != 0:
             for i in m:
                 e.add_field(name='Goal', value=i, inline=False)
-        await ctx.channel.send('', embed=e)
+        await ctx.reply('', embed=e)
     else:
         gametime, period = botLogic.getGameTime(ID, x[9])
         e = discord.Embed(title='Game Day! - ' + x[1] + ' VS. ' + x[2], colour=discord.Colour.from_rgb(r, g, b))
@@ -671,7 +671,7 @@ async def Gtoday(ctx, ABBR):
         if len(m) != 0:
             for i in m:
                 e.add_field(name='Goal', value=i, inline=False)
-        await ctx.channel.send('', embed=e)
+        await ctx.reply('', embed=e)
 
 @client.command()
 async def divStandings(ctx, div):
@@ -764,6 +764,17 @@ async def Pinfo(ctx, playername):
     await ctx.reply('', embed=e)
     # await ctx.reply("")
 
+@slash.slash(
+    name="Tinfo", 
+    description="Provide information about the requested team", 
+    options= [
+        create_option(
+            name="abbr", 
+            description="NHL team abbreviation.", 
+            option_type=3, 
+            required=True,
+            )
+        ])
 @client.command()
 async def Tinfo(ctx, abbr):
     name, info, colour = teamInfo.teamInfo(abbr)

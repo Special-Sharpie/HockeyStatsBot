@@ -3,7 +3,6 @@ import requests
 import datetime
 from datetime import timedelta
 import pytz
-import time
 import json
 
 # Functions that control the bots logic

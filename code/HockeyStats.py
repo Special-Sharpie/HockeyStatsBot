@@ -2,7 +2,7 @@ import json
 import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
-from discord_slash.utils.manage_commands import create_option
+from discord_slash.utils.manage_commands import create_option, create_choice
 import requests
 import datetime
 import pytz
@@ -28,9 +28,11 @@ import statLeaders as sl
 import nonActivePlayerCareer as non
 
 #Variables
-client = commands.Bot(command_prefix='HS-')
+client = commands.Bot(command_prefix='HS_')
 slash = SlashCommand(client, sync_commands=True)
 game = discord.Game("HS-donate | HS-whatsNew | HS-setTimezone")
+activeTeams = ['NJD', 'NYI', 'NYR', 'PHI', 'PIT', 'BOS', 'BUF', 'MTL', 'OTT', 'TOR', 'CAR', 'FLA', 'TBL', 'WSH', 'CHI', 'DET', 'NSH', 'STL', 'CGY', 'COL', 'EDM', 'VAN', 'ANA', 'DAL', 'LAK', 'SJS', 'CBJ', 'MIN', 'WPG', 'ARI', 'VGK', 'SEA']
+
 
 #Events:
 @client.event
@@ -625,6 +627,17 @@ async def Glast(ctx, ABBR):
                 e.add_field(name='Goal', value=i, inline=False)
     await ctx.channel.send('', embed= e)
 
+@slash.slash(
+    name="gtoday", 
+    description="Provides all the details needed for the requested team's current day match up!", 
+    options= [
+        create_option(
+            name="abba", 
+            description="NHL team abbreviation.", 
+            option_type=3, 
+            required=True,
+            )
+        ])
 @client.command()
 async def Gtoday(ctx, ABBR):
     ID = botLogic.readJSON('ABBRid.json', ABBR)
@@ -728,7 +741,17 @@ async def draftByYear(ctx, team, year= 2020):
             e.add_field(name=res, value=draftee, inline= False)
     await ctx.channel.send('', embed=e)
 
-@slash.slash(name="pinfo", description="Provides information about the requested player!", options= [create_option(name="playername", description="Name of an active NHL player", option_type=3, required=True)])
+@slash.slash(
+    name="pinfo", 
+    description="Provides information about the requested player!", 
+    options= [
+        create_option(
+            name="playername", 
+            description="Name of an active NHL player", 
+            option_type=3, 
+            required=True
+            )
+        ])
 @client.command()
 async def Pinfo(ctx, playername):
     playerID = botLogic.GetPlayerID(playername)
@@ -755,7 +778,7 @@ async def Tinfo(ctx, abbr):
     options= [
         create_option(
             name="abbr", 
-            description="NHL team abbreviation>", 
+            description="NHL team abbreviation.", 
             option_type=3, 
             required=True
         ), create_option(

@@ -197,10 +197,8 @@ def getIndex(url, abbr, round, season):
     while i < len(data):
         if data[i]['names']['teamAbbreviationA'] == abbr:
             return i
-            break
         elif data[i]['names']['teamAbbreviationB'] == abbr:
             return i
-            break
         else:
             i += 1
 

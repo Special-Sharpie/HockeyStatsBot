@@ -85,14 +85,17 @@ async def on_guild_join(ctx):
                 create_choice(name="Mountain Time", value="MT"),
                 create_choice(name="Pacific Time", value="PT"),
                 create_choice(name="Central Time", value="CT"),
-                create_choice(name="Eastern Time", value="ET")
+                create_choice(name="Eastern Time", value="ET"),
+                create_choice(name="Central European Time", value="CET"),
+                create_choice(name="Eastern European Time", value="EET"),
+                create_choice(name="Western European Time", value="WET"),
             ]
         )]
     )
 @client.command()
 @commands.has_permissions(administrator=True)
 async def setTimezone(ctx, timezone):
-    timezones = ["MT", "PT", "CT", "ET"]
+    timezones = ["MT", "PT", "CT", "ET", "CET", "EET", "WET"]
     if timezone in timezones:
         guildID = ctx.guild.id
         botLogic.writeJSON('ServerTimezone.json', guildID, timezone)

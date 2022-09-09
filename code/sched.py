@@ -9,9 +9,11 @@ tz={
     "PT" : "Canada/Pacific",
     "MT" : "Canada/Mountain",
     "CT" : "Canada/Central",
-    "ET" : "Canada/Eastern"
+    "ET" : "Canada/Eastern",
+    "CET" : "CET",
+    "EET" : "EET",
+    "WET": "WET"
 }
-
 def schedule(ID, code):
     tday = datetime.datetime.now(pytz.timezone('Canada/Mountain')).date()
     length = 8

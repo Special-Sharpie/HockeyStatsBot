@@ -8,9 +8,11 @@ tz={
     "PT" : "Canada/Pacific",
     "MT" : "Canada/Mountain",
     "CT" : "Canada/Central",
-    "ET" : "Canada/Eastern"
+    "ET" : "Canada/Eastern",
+    "CET" : "CET",
+    "EET" : "EET",
+    "WET": "WET"
 }
-
 def gday(ID, TZ):
     # url for currnet day hockey game
     lst = []

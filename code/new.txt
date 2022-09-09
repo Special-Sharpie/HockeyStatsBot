@@ -1,22 +1,23 @@
-HockeyStats version: 1.4.0
+HockeyStats version: 2.0.0
 
-HockeyStats bot is now verified on discord! Big thanks to everyone who added the bot to their server, we are now sitting in over 120 servers!
-You may have noticed, we have a logo now! It was time to put a face to the name!
+HockeyStats bot is now verified on discord! Big thanks to everyone who added the bot to their server, we are now sitting in over 200 servers!
 
-HS-singleStat is intended to replace the dedicated single stat commands (Pgoals, Gwins, etc.). They will remain active until version 1.5 at the latest.
-HS-perGame was poorly documented on upon release in version 1.3.0, this was improved.
+Big changes have come, the bot now supports Discord slash commands. This should make interacting with the bot much easier.
+However, if the slash commands do not appear in your server, the bot may need to reinvite to the server. 
+Follow this link to invite it: 
+https://discord.com/api/oauth2/authorize?client_id=735215611256373389&permissions=2147534848&scope=applications.commands%20bot
+
+If the issues persist, feel free to email me: hockeystatsbot@gmail.com
+
+The individual stat commands have not been moved to slash, and have had their functionality removed. 
 
 We are on github now! Better late then never right? Link to the repo: https://github.com/Special-Sharpie/HockeyStatsBot
 
 Command Updates:
-    No commands changed this time around, just some clean up and support for the Seattle Krakens.
+    No commands changed this time around, just some clean up and error prevention.
 
 New features:
-    - HS-statLeader: Returns the highest scorers of the requested stat from high to low, takes the team abbreviation, how many places (top 10, top 5 etc) and the stat, which defaults to points. Example: HS_statLeaders CGY 10 goals
-    - HS-ATplayerStats: Returns the career stats of all active and unactive NHL players. Similar to skaterCareer, only with less data and support for goalies. Example: HS-ATplayerStats JaromeIginla
-    - HS-singleStat: Returns a single requested stat. Takes 3 parameters, a player name, a stat code, and a season. Season is optional, defaulting to the current season. Example: HS-singleStat BlakeColeman faceOffPct 20202021. Use HS-statCodes for all stat codes.
-    - HS-perGame: Returns a player's stat over total games played. Takes two parameters, a player, and a stat. Example: HS-perGame EliasLindholm points. Use HS-statCodes for all stat codes.
-    - HS-statCodes: Sends the stat codes for perGame and singleStat by direct message to the requesting user.
-    - HS-commandHistory - Sends the requesting a user a JSON file with all the command attempts after version 1.4.0.
+    All commands are now slash commands, giving all command and options description as you use them, as well as some options having choice to simplify usage.
+    singlestats has been split into goalies and skater, to simplify their usage.
 
 If you like the bot and would like to support its developement, donate to my Paypal: https://www.paypal.com/paypalme/hockeystatsbot

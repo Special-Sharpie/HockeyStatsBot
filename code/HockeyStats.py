@@ -30,7 +30,7 @@ import nonActivePlayerCareer as non
 #Variables
 client = commands.Bot(command_prefix='HS-')
 slash = SlashCommand(client, sync_commands=True)
-game = discord.Game("HS-donate | HS-whatsNew | HS-setTimezone")
+game = discord.Game("/whatsnew | /settimezone | /donate")
 activeTeams = ['NJD', 'NYI', 'NYR', 'PHI', 'PIT', 'BOS', 'BUF', 'MTL', 'OTT', 'TOR', 'CAR', 'FLA', 'TBL', 'WSH', 'CHI', 'DET', 'NSH', 'STL', 'CGY', 'COL', 'EDM', 'VAN', 'ANA', 'DAL', 'LAK', 'SJS', 'CBJ', 'MIN', 'WPG', 'ARI', 'VGK', 'SEA']
 
 
@@ -1298,10 +1298,13 @@ async def whatsNew(ctx):
 async def info(ctx):
     await ctx.reply('Visits the website, email me, or view my GitHub!\n\u2022 GitHub: https://github.com/Special-Sharpie/HockeyStatsBot \n\u2022 Website: https://hockeystatsbot.ca/ \n\u2022 Email: hockeystatsbot@gmail.com')
 
-
+@slash.slash(
+    name="donate", 
+    description="If you enjoy the bot, consider supporting its development!.",
+    options=[])
 @client.command()
 async def donate(ctx):
-    await ctx.author.send('Donate here: https://www.paypal.com/paypalme/hockeystatsbot')
+    await ctx.reply('Donate here: https://www.paypal.com/paypalme/hockeystatsbot')
 
 #Runs the bot
 with open('token.txt', 'r+') as f:

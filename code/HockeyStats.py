@@ -1285,7 +1285,7 @@ async def GoalieSingleStat(ctx, playername, statname, season= botLogic.GetCurren
     options=[])
 @client.command()
 async def whatsNew(ctx):
-    with open('../code/new.txt', 'r') as f:
+    with open('new.txt', 'r') as f:
         x = f.read()
     e = discord.Embed(title='New features/Changes', description=x, colour= discord.Colour.from_rgb(0,0,0))
     await ctx.reply('', embed= e)

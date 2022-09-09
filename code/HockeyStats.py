@@ -855,7 +855,7 @@ async def divStandings(ctx, div):
     description="Provides the most up to date conference standings for the current season!", 
     options= [
         create_option(
-            name="conf", 
+            name="conference", 
             description="Changes which conference standings provieded.", 
             option_type=3, 
             required=True,
@@ -866,9 +866,9 @@ async def divStandings(ctx, div):
         )
     ])
 @client.command()
-async def confStandings(ctx, conf):
-    x = standings.conf(conf)
-    e = discord.Embed(title= x[0][:4] + '-' + x[0][4:] +' '+ conf + ' Conference Standings', description= x[1], colour= discord.Colour.from_rgb(0, 0, 0))
+async def confStandings(ctx, conference):
+    x = standings.conf(conference)
+    e = discord.Embed(title= x[0][:4] + '-' + x[0][4:] +' '+ conference + ' Conference Standings', description= x[1], colour= discord.Colour.from_rgb(0, 0, 0))
     await ctx.reply('', embed=e)
 
 @slash.slash(
@@ -1154,7 +1154,7 @@ async def statCodes(ctx):
             option_type=3, 
             required=True
         ), create_option(
-            name="statname",
+            name="stat",
             description="Changes the stat that is returned." ,
             option_type=3,
             required=True,
@@ -1191,11 +1191,11 @@ async def statCodes(ctx):
         )
     ])
 @client.command()
-async def skaterSingleStat(ctx, playername, statname, season= botLogic.GetCurrentSeason()):
+async def skaterSingleStat(ctx, playername, stat, season= botLogic.GetCurrentSeason()):
     player = hockeyPy.Player(playername, season)
     playername = player.GetPlayerName()
-    statValue = player.stats[statname]
-    statName = botLogic.statProperName(statname)
+    statValue = player.stats[stat]
+    statName = botLogic.statProperName(stat)
     if statValue == 1:
         lastChar = list(statName)[-1]
         statName = statName.replace(lastChar, '')
@@ -1224,7 +1224,7 @@ async def skaterSingleStat(ctx, playername, statname, season= botLogic.GetCurren
             option_type=3, 
             required=True
         ), create_option(
-            name="statname",
+            name="stat",
             description="Changes the stat that is returned." ,
             option_type=3,
             required=True,
@@ -1259,11 +1259,11 @@ async def skaterSingleStat(ctx, playername, statname, season= botLogic.GetCurren
         )
     ])
 @client.command()
-async def GoalieSingleStat(ctx, playername, statname, season= botLogic.GetCurrentSeason()):
+async def GoalieSingleStat(ctx, playername, stat, season= botLogic.GetCurrentSeason()):
     player = hockeyPy.Player(playername, season)
     playername = player.GetPlayerName()
-    statValue = player.stats[statname]
-    statName = botLogic.statProperName(statname)
+    statValue = player.stats[stat]
+    statName = botLogic.statProperName(stat)
     if statValue == 1:
         lastChar = list(statName)[-1]
         statName = statName.replace(lastChar, '')

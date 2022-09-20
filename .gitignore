@@ -1,4 +1,5 @@
 .idea/
+/code/testbotarchive.txt
 /code/ServerTimezone.json
 /code/token.txt
 /code/ChadDataBase.json

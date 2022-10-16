@@ -115,6 +115,7 @@ async def setTimezone(ctx, timezone):
         )])
 @client.command()
 async def skaterCareer(ctx, playername):
+    await ctx.defer()
     playerID = botLogic.readJSON('Player.json', playername)
     playername = botLogic.GetPlayerName(playerID)
     x = Career.skaterStats(str(playerID))
@@ -139,6 +140,7 @@ async def skaterCareer(ctx, playername):
         ])
 @client.command()
 async def teamWL(ctx, abbr):
+    await ctx.defer()
     abbr = abbr.upper()
     ID = botLogic.readJSON('ABBRid.json', abbr)
     y = botLogic.readJSON('TeamColour.json', ID)
@@ -182,6 +184,7 @@ async def teamID(ctx):
 
 @client.command()
 async def lifeWL(ctx, abbr1, abbr2):
+    await ctx.defer()
     abbr1 = abbr1.upper()
     abbr2 = abbr2.upper()
     FranID1 = botLogic.readJSON('ABBRid.json', abbr1)
@@ -220,6 +223,7 @@ async def lifeWL(ctx, abbr1, abbr2):
     ])
 @client.command()
 async def Pstats(ctx, playername, season= botLogic.GetCurrentSeason(), playoff= 'R',):
+    await ctx.defer()
     playerID = botLogic.readJSON('Player.json', playername)
     if playoff == "R":
         x = playerStats.stats(playerID, playoff, season)
@@ -274,6 +278,7 @@ async def Pstats(ctx, playername, season= botLogic.GetCurrentSeason(), playoff= 
     ])
 @client.command()
 async def perGame(ctx, playername, stat, season= botLogic.GetCurrentSeason()):
+    await ctx.defer()
     playerID = botLogic.readJSON('Player.json', playername)
     playername = botLogic.GetPlayerName(playerID)
     statName, statAvg, rawStat, games = statsPerGame.statsPerGameCalculator(playerID, stat, season)
@@ -719,6 +724,7 @@ async def Pshgoals(ctx, playername, season= botLogic.GetCurrentSeason()):
         ])
 @client.command()
 async def Gnext(ctx, abbr):
+    await ctx.defer()
     abbr = abbr.upper()
     guildID = ctx.guild.id
     teamID = botLogic.readJSON('ABBRid.json', abbr)
@@ -742,6 +748,7 @@ async def Gnext(ctx, abbr):
 
 @client.command()
 async def next7(ctx, abbr):
+    await ctx.defer()
     abbr = abbr.upper()
     guildID = ctx.guild.id
     ID = botLogic.readJSON('ABBRid.json', abbr)
@@ -771,6 +778,7 @@ async def next7(ctx, abbr):
         ])
 @client.command()
 async def Glast(ctx, abbr):
+    await ctx.defer()
     abbr = abbr.upper()
     teamID = botLogic.readJSON('ABBRid.json', abbr)
     r, g, b = botLogic.readJSON('TeamColour.json', teamID)
@@ -804,6 +812,7 @@ async def Glast(ctx, abbr):
         ])
 @client.command()
 async def Gtoday(ctx, abbr):
+    await ctx.defer()
     abbr = abbr.upper()
     try:
         ID = botLogic.readJSON('ABBRid.json', abbr)
@@ -867,6 +876,7 @@ async def divStandings(ctx, div):
     ])
 @client.command()
 async def confStandings(ctx, conference):
+    await ctx.defer()
     x = standings.conf(conference)
     e = discord.Embed(title= x[0][:4] + '-' + x[0][4:] +' '+ conference + ' Conference Standings', description= x[1], colour= discord.Colour.from_rgb(0, 0, 0))
     await ctx.reply('', embed=e)
@@ -884,6 +894,7 @@ async def confStandings(ctx, conference):
         ])
 @client.command()
 async def leagueStandings(ctx, season= botLogic.GetCurrentSeason()):
+    await ctx.defer()
     x = standings.league(season)
     e = discord.Embed(title= x[0][:4] + '-' + x[0][4:] + ' | League Standings', description= x[1], colour= discord.Colour.from_rgb(0, 0, 0))
     await ctx.reply('', embed= e)
@@ -901,6 +912,7 @@ async def leagueStandings(ctx, season= botLogic.GetCurrentSeason()):
         ])
 @client.command()
 async def SCFwinner(ctx, season):
+    await ctx.defer()
     x = playoffData.playoffWin(season)
     r, g, b = botLogic.readJSON('TeamColour.json', x[5])
     e = discord.Embed(title= x[0] + ' ' + x[1], colour= discord.Colour.from_rgb(r, g, b))
@@ -938,6 +950,7 @@ async def SCFwinner(ctx, season):
     ])
 @client.command()
 async def playoffStandings(ctx, abbr, round, season):
+    await ctx.defer()
     abbr = abbr.upper()
     x = playoffBracket.playoffStanding(abbr, round, season)
     r, g, b = botLogic.readJSON('TeamColour.json', x[6])
@@ -959,6 +972,7 @@ async def playoffStandings(ctx, abbr, round, season):
         ])
 @client.command()
 async def daySummary(ctx, date= None):
+    await ctx.defer()
     if date == None:
         isToday = True
         date = str(datetime.datetime.now(pytz.timezone('Canada/Mountain')))
@@ -1007,6 +1021,7 @@ async def daySummary(ctx, date= None):
     ])
 @client.command()
 async def draftByYear(ctx, abbr, year):
+    await ctx.defer()
     abbr = abbr.upper()
     teamID = botLogic.readJSON('ABBRid.json', abbr)
     teamFullName = botLogic.GetTeamName(teamID)
@@ -1031,6 +1046,7 @@ async def draftByYear(ctx, abbr, year):
         ])
 @client.command()
 async def Pinfo(ctx, playername):
+    await ctx.defer()
     playerID = botLogic.GetPlayerID(playername)
     fullName = botLogic.GetPlayerName(playerID)
     personal = playerInfo.playerInfo(playername)
@@ -1054,6 +1070,7 @@ async def Pinfo(ctx, playername):
         ])
 @client.command()
 async def Tinfo(ctx, abbr):
+    await ctx.defer()
     abbr = abbr.upper()
     name, info, colour = teamInfo.teamInfo(abbr)
     x = teamInfo.teamInfo(abbr)
@@ -1130,6 +1147,7 @@ async def statLeaders(ctx, abbr, count=5, stat='points'):
         ])
 @client.command()
 async def ATplayerStats(ctx, playername):
+    await ctx.defer()
     playerId = botLogic.readJSON("AllTimePlayer.json", playername)
     firstYear, lastYear, fullname, stats = non.skaterStats(playerId)
     x = non.skaterStats(playerId)
@@ -1192,6 +1210,7 @@ async def statCodes(ctx):
     ])
 @client.command()
 async def skaterSingleStat(ctx, playername, stat, season= botLogic.GetCurrentSeason()):
+    await ctx.defer()
     player = hockeyPy.Player(playername, season)
     playername = player.GetPlayerName()
     statValue = player.stats[stat]
@@ -1260,6 +1279,7 @@ async def skaterSingleStat(ctx, playername, stat, season= botLogic.GetCurrentSea
     ])
 @client.command()
 async def GoalieSingleStat(ctx, playername, stat, season= botLogic.GetCurrentSeason()):
+    await ctx.defer()
     player = hockeyPy.Player(playername, season)
     playername = player.GetPlayerName()
     statValue = player.stats[stat]

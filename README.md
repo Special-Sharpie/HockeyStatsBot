@@ -3,7 +3,7 @@ HockeyStatsBot
 A Discord Bot that uses the NHL API in order to pull live updating hockey stats.
 
 URL where all this data can be viewed: https://statsapi.web.nhl.com/api/v1/teams
-
+###Add the bot to your server
 URL to add the Discord Bot: 
 https://discord.com/api/oauth2/authorize?client_id=735215611256373389&permissions=18432&scope=bot
 

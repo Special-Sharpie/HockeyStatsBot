@@ -30,7 +30,7 @@ import nonActivePlayerCareer as non
 #Variables
 client = commands.Bot(command_prefix='HS-')
 slash = SlashCommand(client, sync_commands=True)
-game = discord.Game("/whatsnew | /settimezone | /donate")
+game = discord.Game("Check the new website! | /whatsnew")
 activeTeams = ['NJD', 'NYI', 'NYR', 'PHI', 'PIT', 'BOS', 'BUF', 'MTL', 'OTT', 'TOR', 'CAR', 'FLA', 'TBL', 'WSH', 'CHI', 'DET', 'NSH', 'STL', 'CGY', 'COL', 'EDM', 'VAN', 'ANA', 'DAL', 'LAK', 'SJS', 'CBJ', 'MIN', 'WPG', 'ARI', 'VGK', 'SEA']
 
 
